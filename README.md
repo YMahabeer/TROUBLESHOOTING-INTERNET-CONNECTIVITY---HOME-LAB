@@ -157,10 +157,10 @@ Let’s start the troubleshooting process with the client machine which has inte
 
     If the issue is not the cable, then you will have to replace the NIC card or motherboard if it is integrated. Before you do that however, you can insert a known good NIC card into the machine to see if that works. If the issue is resolved, then it is faulty hardware causing the problems.   
 
-      i. **Hard Drive Swap**   
-      A great way to determine if the connectivity issues are hardware verses software related is to boot into a different operating system on the same machine. You can do this by swapping the hard drive in the machine with a known good one. If the system booths and there are no issues, then it’s a software issue. If it is still not fixed, then you know it’s a hardware problem.
+    **Hard Drive Swap**   
+    A great way to determine if the connectivity issues are hardware verses software related is to boot into a different operating system on the same machine. You can do this by swapping the hard drive in the machine with a known good one. If the system booths and there are no issues, then it’s a software issue. If it is still not fixed, then you know it’s a hardware problem.
 
-      Most of the time the machine will find the new drive but if you are having issues then you can press the ESC/F10/F12 keys during boot. This will open the boot menu and allow you to manually select which drive to booth from.
+    Most of the time the machine will find the new drive but if you are having issues then you can press the ESC/F10/F12 keys during boot. This will open the boot menu and allow you to manually select which drive to booth from.
 
     f. **Resolve Software Related Problems**   
     If the issues are not hardware related, then they might be software related. Here are a few ways to resolve the software related issues.
