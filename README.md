@@ -229,7 +229,7 @@ Let’s start the troubleshooting process with the client machine which has inte
 
         You can now follow the on-screen instructions and select the system image that you want to use for recovery.
 
-      ii. **Troubleshooting Network Adapter Drivers**
+      ii. **Troubleshooting Network Adapter Drivers**  
       You can use Device Manager to fix software issues related to network adapter drivers. 
 
       You will need to open device manager with Admin right so that you have the correct permissions to uninstall and reinstall the correct drivers.
