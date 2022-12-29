@@ -120,173 +120,173 @@ Let’s start the troubleshooting process with the client machine which has inte
 
 
 3.	### Malware   
-Malware on a client machine can cause it to have connectivity issues. This can be the malware trying to prevent the user from attempting to remove it. The malware will try to stop the user from updating their machine or downloading a program to get rid of the malware. The malware can also consume all available resources or connection bandwidth in its attempt to send data from the machine to a remote server. This infection might spread to other machines so you will have to isolate this machine and immediately elevate this issue to resolve it as soon as possible.
+    Malware on a client machine can cause it to have connectivity issues. This can be the malware trying to prevent the user from attempting to remove it. The malware will try to stop the user from updating their machine or downloading a program to get rid of the malware. The malware can also consume all available resources or connection bandwidth in its attempt to send data from the machine to a remote server. This infection might spread to other machines so you will have to isolate this machine and immediately elevate this issue to resolve it as soon as possible.
 
 4.	### Troubleshoot NIC    
-If you have tried everything and can’t solve the connection issues, then the issue might be with the NIC on the client machine. It could be a software or even hardware related issue.
+    If you have tried everything and can’t solve the connection issues, then the issue might be with the NIC on the client machine. It could be a software or even hardware related issue.
 
-a. **Signs of Faulty NIC**    
-A sign that the NIC is going bad is if the connection is intermittent. This can show up with websites being intermittently slow to load. Downloads failing halfway. You can also test by going to an internet speed test website and seeing if the connection speed is consistent verses jumping up or down.
+    a. **Signs of Faulty NIC**    
+    A sign that the NIC is going bad is if the connection is intermittent. This can show up with websites being intermittently slow to load. Downloads failing halfway. You can also test by going to an internet speed test website and seeing if the connection speed is consistent verses jumping up or down.
 
-b. **Network Adapter Options**   
-You can also go to settings -> Network & Internet -> Change adapter options. Here you can look to see if there are any obvious issues. You can see if the NIC adapter is missing entirely or is displaying an error that might give you a hint of what the issue is.  
-![image](https://user-images.githubusercontent.com/121589466/209910840-be4727df-7985-4fb8-a4e4-1a69e153ff3e.png)
+    b. **Network Adapter Options**   
+    You can also go to settings -> Network & Internet -> Change adapter options. Here you can look to see if there are any obvious issues. You can see if the NIC adapter is missing entirely or is displaying an error that might give you a hint of what the issue is.  
+    ![image](https://user-images.githubusercontent.com/121589466/209910840-be4727df-7985-4fb8-a4e4-1a69e153ff3e.png)
 
 
-c. **Device Manager**    
-You can also check if the Network adapter is identified by the client machine by using device manager. Open Device Manger and scroll down to Network adapters. Expand the menu to see all adapters. If there are any issues, then the adapter might be missing completely or will show an error.  
-![image](https://user-images.githubusercontent.com/121589466/209910939-ae21ad7f-9b2e-4c76-8e63-40bd0f533afb.png)
+    c. **Device Manager**    
+    You can also check if the Network adapter is identified by the client machine by using device manager. Open Device Manger and scroll down to Network adapters. Expand the menu to see all adapters. If there are any issues, then the adapter might be missing completely or will show an error.  
+    ![image](https://user-images.githubusercontent.com/121589466/209910939-ae21ad7f-9b2e-4c76-8e63-40bd0f533afb.png)
 
 
-You can get more information by right clicking on an adapter and selecting Properties.  
-![image](https://user-images.githubusercontent.com/121589466/209910945-55788867-6b93-4571-88e7-7649fcd8391f.png)
+    You can get more information by right clicking on an adapter and selecting Properties.  
+    ![image](https://user-images.githubusercontent.com/121589466/209910945-55788867-6b93-4571-88e7-7649fcd8391f.png)
 
 
-Here you can check the status of the adapter. If it is not working properly then you will see a display of the error.  
-![image](https://user-images.githubusercontent.com/121589466/209910949-8d7938c4-310b-435f-bf52-8e91931389ff.png)
+    Here you can check the status of the adapter. If it is not working properly then you will see a display of the error.  
+    ![image](https://user-images.githubusercontent.com/121589466/209910949-8d7938c4-310b-435f-bf52-8e91931389ff.png)
 
 
-d. **Ping Test**   
-The more direct way to test if a NIC is faulty is to use a ping test. You do this by having the client machine ping itself. It will send packets to the NIC card and display the results.
+    d. **Ping Test**   
+    The more direct way to test if a NIC is faulty is to use a ping test. You do this by having the client machine ping itself. It will send packets to the NIC card and display the results.
 
-To start the process, open the command prompt program or PowerShell and type “ping 127.0.0.1”. Then press enter to run the command. If the results show something similar to “Packets: Sent=4, Receive=0, Lost=4”, then the NIC is faulty. If the NIC is good, there should be no lost packets. You can run this test a few times to get a view of how often packets are being lost.  
-![image](https://user-images.githubusercontent.com/121589466/209910967-5f9b3e2b-24ad-4e30-b3ab-3d5de95ae89e.png)
+    To start the process, open the command prompt program or PowerShell and type “ping 127.0.0.1”. Then press enter to run the command. If the results show something similar to “Packets: Sent=4, Receive=0, Lost=4”, then the NIC is faulty. If the NIC is good, there should be no lost packets. You can run this test a few times to get a view of how often packets are being lost.  
+    ![image](https://user-images.githubusercontent.com/121589466/209910967-5f9b3e2b-24ad-4e30-b3ab-3d5de95ae89e.png)
 
 
-e. **Resolve Hardware Related Problems**   
-Start with the most obvious culprit. Is the ethernet cable properly plugged into the port. Is it showing signs of damage. You might have to try a new cable if you suspect it’s a problem with the cable. Try to shake the cable when its plugged in. Is it in firmly or is it loose? When shaking the cable, does the LED on the port turn on as you move the cable. If it does, then it could be a bad port.
+    e. **Resolve Hardware Related Problems**   
+    Start with the most obvious culprit. Is the ethernet cable properly plugged into the port. Is it showing signs of damage. You might have to try a new cable if you suspect it’s a problem with the cable. Try to shake the cable when its plugged in. Is it in firmly or is it loose? When shaking the cable, does the LED on the port turn on as you move the cable. If it does, then it could be a bad port.
 
-If the issue is not the cable, then you will have to replace the NIC card or motherboard if it is integrated. Before you do that however, you can insert a known good NIC card into the machine to see if that works. If the issue is resolved, then it is faulty hardware causing the problems.
+    If the issue is not the cable, then you will have to replace the NIC card or motherboard if it is integrated. Before you do that however, you can insert a known good NIC card into the machine to see if that works. If the issue is resolved, then it is faulty hardware causing the problems.
 
-i. **Hard Drive Swap**   
-A great way to determine if the connectivity issues are hardware verses software related is to boot into a different operating system on the same machine. You can do this by swapping the hard drive in the machine with a known good one. If the system booths and there are no issues, then it’s a software issue. If it is still not fixed, then you know it’s a hardware problem.
+      i. **Hard Drive Swap**   
+      A great way to determine if the connectivity issues are hardware verses software related is to boot into a different operating system on the same machine. You can do this by swapping the hard drive in the machine with a known good one. If the system booths and there are no issues, then it’s a software issue. If it is still not fixed, then you know it’s a hardware problem.
 
-Most of the time the machine will find the new drive but if you are having issues then you can press the ESC/F10/F12 keys during boot. This will open the boot menu and allow you to manually select which drive to booth from.
+      Most of the time the machine will find the new drive but if you are having issues then you can press the ESC/F10/F12 keys during boot. This will open the boot menu and allow you to manually select which drive to booth from.
 
-f.	### Resolve Software Related Problems   
-If the issues are not hardware related, then they might be software related. Here are a few ways to resolve the software related issues.
+    f. **Resolve Software Related Problems**   
+    If the issues are not hardware related, then they might be software related. Here are a few ways to resolve the software related issues.
 
-i.	### Boot Machine from Known Good State    
-If you have determined that that the issue could be software based, then you can booth the machine using a known good backup or perform a system restore. This is the fastest path to resolving the issue and will work most of the time if it’s a software problem.
+      i. **Boot Machine from Known Good State**    
+      If you have determined that that the issue could be software based, then you can booth the machine using a known good backup or perform a system restore. This is the fastest path to resolving the issue and will work most of the time if it’s a software problem.
 
-1. **Restore from System Restore Point**   
-You should first try to perform a system restore if you have not created any backups of your system, or you recently installed new programs or updates onto your system.
+        1. **Restore from System Restore Point**   
+        You should first try to perform a system restore if you have not created any backups of your system, or you recently installed new programs or updates onto your system.
 
-If system protection is not turned on, then you will not have any restore points and will not be able to use this method to restore the machine.  
-![image](https://user-images.githubusercontent.com/121589466/209910982-fd8e008e-21d7-47f8-902f-bcc7614ef3d8.png)
+        If system protection is not turned on, then you will not have any restore points and will not be able to use this method to restore the machine.  
+        ![image](https://user-images.githubusercontent.com/121589466/209910982-fd8e008e-21d7-47f8-902f-bcc7614ef3d8.png)
 
 
-To perform a system restore, open Control Panel. Then in the control panel search box, search “recovery”. Select Recovery in the results. 
-![image](https://user-images.githubusercontent.com/121589466/209910989-51a0a7ee-79c8-44ae-9ce1-b919fdab83b8.png)
+        To perform a system restore, open Control Panel. Then in the control panel search box, search “recovery”. Select Recovery in the results. 
+        ![image](https://user-images.githubusercontent.com/121589466/209910989-51a0a7ee-79c8-44ae-9ce1-b919fdab83b8.png)
 
 
-Click open system restore.  
-![image](https://user-images.githubusercontent.com/121589466/209911001-f7163922-d8ce-482a-85bc-27bfb0c6354e.png)
+        Click open system restore.  
+        ![image](https://user-images.githubusercontent.com/121589466/209911001-f7163922-d8ce-482a-85bc-27bfb0c6354e.png)
 
 
-Click Next to go to the next page. You will see a list of system restore points. Select the one that you want to use to restore your system to. Then select Scan for affected programs. You will see a list of items which will be deleted if you proceed with the system restore. If you are ok with those items being deleted, then select close -> Next -> Finish.
+        Click Next to go to the next page. You will see a list of system restore points. Select the one that you want to use to restore your system to. Then select Scan for affected programs. You will see a list of items which will be deleted if you proceed with the system restore. If you are ok with those items being deleted, then select close -> Next -> Finish.
 
-2. **Resetting PC**    
-This is another method to use if system restore didn’t work. This option allows you to reinstall windows while keeping your files. You can do this from the settings or logon screen. 
+        2. **Resetting PC**    
+        This is another method to use if system restore didn’t work. This option allows you to reinstall windows while keeping your files. You can do this from the settings or logon screen. 
 
-Unlike system restore, this method will delete all programs and change all settings back to default.
+        Unlike system restore, this method will delete all programs and change all settings back to default.
 
-Reset your machine by going to Settings -> Update & Security -> Recovery.  
-![image](https://user-images.githubusercontent.com/121589466/209911017-91e2d82d-de5b-4817-9d74-0540b4a689cd.png)
+        Reset your machine by going to Settings -> Update & Security -> Recovery.  
+        ![image](https://user-images.githubusercontent.com/121589466/209911017-91e2d82d-de5b-4817-9d74-0540b4a689cd.png)
 
 
-Under Reset this PC. Select Get Started.  
-![image](https://user-images.githubusercontent.com/121589466/209911022-b68d2a49-9cf7-46a2-8ef6-628f09a3d963.png)
+        Under Reset this PC. Select Get Started.  
+        ![image](https://user-images.githubusercontent.com/121589466/209911022-b68d2a49-9cf7-46a2-8ef6-628f09a3d963.png)
 
 
-Select Keep my files.  
-![image](https://user-images.githubusercontent.com/121589466/209911026-4adb7a78-fa2b-43d4-8870-f116d557d0e2.png)
+        Select Keep my files.  
+        ![image](https://user-images.githubusercontent.com/121589466/209911026-4adb7a78-fa2b-43d4-8870-f116d557d0e2.png)
 
 
-This process will keep your files but delete all programs and change settings back to default. Click the Reset button to begin the process.  
-![image](https://user-images.githubusercontent.com/121589466/209911036-8b34ad00-b53b-4349-a9ee-00242f72a31d.png)
+        This process will keep your files but delete all programs and change settings back to default. Click the Reset button to begin the process.  
+        ![image](https://user-images.githubusercontent.com/121589466/209911036-8b34ad00-b53b-4349-a9ee-00242f72a31d.png)
 
 
-3.	### Reinstall OS Using Installation Media   
-If system restore and resetting your machine didn’t work, then reinstalling the OS using Installation Media is the next option to try. 
+        3. **Reinstall OS Using Installation Media**   
+        If system restore and resetting your machine didn’t work, then reinstalling the OS using Installation Media is the next option to try. 
 
-First you need to create a Windows 10 installation media. You will need to perform this process on another machine with a working internet connection. You can then transfer the installation media to the machine with connectivity issues. 
+        First you need to create a Windows 10 installation media. You will need to perform this process on another machine with a working internet connection. You can then transfer the installation media to the machine with connectivity issues. 
 
-Go to the link below and click Download Now under Create Windows Installation Media.
-https://www.microsoft.com/en-us/software-download/windows10  
-![image](https://user-images.githubusercontent.com/121589466/209911045-f44b50dd-0bc8-40aa-917b-8e42c39641b2.png)
+        Go to the link below and click Download Now under Create Windows Installation Media.
+        https://www.microsoft.com/en-us/software-download/windows10  
+        ![image](https://user-images.githubusercontent.com/121589466/209911045-f44b50dd-0bc8-40aa-917b-8e42c39641b2.png)
 
 
-Once downloaded, double-click and open the installation media creation tool. Select Create installation media for another PC. Go through the standard windows installation process of choosing your preferred language, edition, etc. Save it to a USB drive and connect that to the machine with connectivity issues.
+        Once downloaded, double-click and open the installation media creation tool. Select Create installation media for another PC. Go through the standard windows installation process of choosing your preferred language, edition, etc. Save it to a USB drive and connect that to the machine with connectivity issues.
 
-On the machine with connectivity issues, open file explorer and find the drive with the installation media on it. Double click the installation media to launch it and begin the process.
+        On the machine with connectivity issues, open file explorer and find the drive with the installation media on it. Double click the installation media to launch it and begin the process.
 
-Select Change what to keep. Then select Keep personal files and Apps. Then select Next. Click Install to begin the installation process.
+        Select Change what to keep. Then select Keep personal files and Apps. Then select Next. Click Install to begin the installation process.
 
-4.	### Booth From Known Good Backup    
-If you regularly save backups of your machines using the backup and restore feature, then you can simply restore your system from a backup or system image that you know is good.
+        4.	### Booth From Known Good Backup    
+        If you regularly save backups of your machines using the backup and restore feature, then you can simply restore your system from a backup or system image that you know is good.
 
-To restore from a backup, hold shift while you press the restart button in the start menu. You can now click troubleshoot -> Advanced Options -> See more recovery options -> system image recovery.
+        To restore from a backup, hold shift while you press the restart button in the start menu. You can now click troubleshoot -> Advanced Options -> See more recovery options -> system image recovery.
 
-You can now follow the on-screen instructions and select the system image that you want to use for recovery.
+        You can now follow the on-screen instructions and select the system image that you want to use for recovery.
 
-ii.	### Troubleshooting Network Adapter Drivers
-You can use Device Manager to fix software issues related to network adapter drivers. 
+      ii.	### Troubleshooting Network Adapter Drivers
+      You can use Device Manager to fix software issues related to network adapter drivers. 
 
-You will need to open device manager with Admin right so that you have the correct permissions to uninstall and reinstall the correct drivers.
+      You will need to open device manager with Admin right so that you have the correct permissions to uninstall and reinstall the correct drivers.
 
-To do this, open PowerShell with admin rights.  
-![image](https://user-images.githubusercontent.com/121589466/209911076-e69aa757-b13a-4cc0-b1ef-d79728377ec9.png)
+      To do this, open PowerShell with admin rights.  
+      ![image](https://user-images.githubusercontent.com/121589466/209911076-e69aa757-b13a-4cc0-b1ef-d79728377ec9.png)
 
 
-Then type in devmgmt.msc and press enter to launch device manager with admin rights. This will give you the permissions needed to uninstall and install drivers.  
-![image](https://user-images.githubusercontent.com/121589466/209911096-9e7eb23f-7b27-4049-a2af-ff982833f935.png)
+      Then type in devmgmt.msc and press enter to launch device manager with admin rights. This will give you the permissions needed to uninstall and install drivers.  
+      ![image](https://user-images.githubusercontent.com/121589466/209911096-9e7eb23f-7b27-4049-a2af-ff982833f935.png)
 
 
-With Device Manger open, scroll down to Network adapters. Expand the menu to see all adapters. If there are any issues, then the adapter might be missing completely or will show an error.  
-![image](https://user-images.githubusercontent.com/121589466/209911106-a479ba98-7c2f-40dc-8e4e-1f7b1aa83ffa.png)
+      With Device Manger open, scroll down to Network adapters. Expand the menu to see all adapters. If there are any issues, then the adapter might be missing completely or will show an error.  
+      ![image](https://user-images.githubusercontent.com/121589466/209911106-a479ba98-7c2f-40dc-8e4e-1f7b1aa83ffa.png)
 
 
-If there is an issue, then there will be a small hazard triangle over the adapter icon.   
-![image](https://user-images.githubusercontent.com/121589466/209911118-e20e142c-40c2-4d4f-88e2-d89f9b31942c.png)
+      If there is an issue, then there will be a small hazard triangle over the adapter icon.   
+      ![image](https://user-images.githubusercontent.com/121589466/209911118-e20e142c-40c2-4d4f-88e2-d89f9b31942c.png)
 
 
-You can get more information about an adapter by right clicking on the adapter and selecting Properties.  
-![image](https://user-images.githubusercontent.com/121589466/209911124-8f9df9fd-643e-497a-8649-5b3fb8bb1906.png)
+      You can get more information about an adapter by right clicking on the adapter and selecting Properties.  
+      ![image](https://user-images.githubusercontent.com/121589466/209911124-8f9df9fd-643e-497a-8649-5b3fb8bb1906.png)
 
 
-Here you can check the status of the adapter. If the device is working properly then it will show it is working properly, like below.  
-![image](https://user-images.githubusercontent.com/121589466/209911130-3e610209-f713-4222-a044-f297271237c1.png)
+      Here you can check the status of the adapter. If the device is working properly then it will show it is working properly, like below.  
+      ![image](https://user-images.githubusercontent.com/121589466/209911130-3e610209-f713-4222-a044-f297271237c1.png)
 
 
-If it’s not working properly then you will see a display of the error.  
-![image](https://user-images.githubusercontent.com/121589466/209911140-2b48d31d-09e4-4c3b-8e2b-b8bc4c1bb70d.png)
+      If it’s not working properly then you will see a display of the error.  
+      ![image](https://user-images.githubusercontent.com/121589466/209911140-2b48d31d-09e4-4c3b-8e2b-b8bc4c1bb70d.png)
 
 
 
-1.	### Toggle Off and On Network Drivers   
-Just like how turning a machine off and then on can solve many problems, the same can happen with devices in device manager.
+        1.	### Toggle Off and On Network Drivers   
+        Just like how turning a machine off and then on can solve many problems, the same can happen with devices in device manager.
 
-To do this, right click on the Network adapter and select Disable device. Then right click on it again and select Enable device.  
-![image](https://user-images.githubusercontent.com/121589466/209911147-2efda369-6327-426c-9c6a-7bf435e8010b.png)
+        To do this, right click on the Network adapter and select Disable device. Then right click on it again and select Enable device.  
+        ![image](https://user-images.githubusercontent.com/121589466/209911147-2efda369-6327-426c-9c6a-7bf435e8010b.png)
 
 
-2.	### Reinstall Network Adapter Drivers   
-You can fix network adapter driver issues by reinstalling or updating them. You will have to first find the driver on the manufactures website and download it. You can try searching the name of the driver in google and you will find the download for it.
+        2.	### Reinstall Network Adapter Drivers   
+        You can fix network adapter driver issues by reinstalling or updating them. You will have to first find the driver on the manufactures website and download it. You can try searching the name of the driver in google and you will find the download for it.
 
-Once you have downloaded the driver, right click on the adapter and select Update driver.  
-![image](https://user-images.githubusercontent.com/121589466/209911153-d5904d41-721a-4963-a0f8-e1d9801620b4.png)
+        Once you have downloaded the driver, right click on the adapter and select Update driver.  
+        ![image](https://user-images.githubusercontent.com/121589466/209911153-d5904d41-721a-4963-a0f8-e1d9801620b4.png)
 
 
-Then select Browse my computer for drivers. You can now navigate to where you saved the driver you downloaded earlier.  
-![image](https://user-images.githubusercontent.com/121589466/209911160-821c6fe9-94b3-4188-a5ac-7717831b292f.png)
+        Then select Browse my computer for drivers. You can now navigate to where you saved the driver you downloaded earlier.  
+        ![image](https://user-images.githubusercontent.com/121589466/209911160-821c6fe9-94b3-4188-a5ac-7717831b292f.png)
 
 
-iii.	### Reset Winsock   
-This is an API which operates between applications and the underlying communication protocols.  Resetting its catalog back to the default settings might help solve network adapter problems.
+        iii.	### Reset Winsock   
+        This is an API which operates between applications and the underlying communication protocols.  Resetting its catalog back to the default settings might help solve network adapter problems.
 
-First open PowerShell with Admin privileges. Enter the command “netsh winsock reset” and press enter to execute it. You can now restart the machine to complete the process.  
-![image](https://user-images.githubusercontent.com/121589466/209911169-ec04306f-900e-427a-97ab-2750d0a1e57e.png)
+        First open PowerShell with Admin privileges. Enter the command “netsh winsock reset” and press enter to execute it. You can now restart the machine to complete the process.  
+        ![image](https://user-images.githubusercontent.com/121589466/209911169-ec04306f-900e-427a-97ab-2750d0a1e57e.png)
 
 
 
