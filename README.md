@@ -9,17 +9,17 @@ The goal of this lab isn’t to teach you the fastest way to resolve network con
 
 ### Lab Outline
 1. Lab Setup
-	a. Diagram of the network path
-2. Client Machine
-	a. Restart and Update
-	b. Firewalls
-	c. Malware
-	d. Troubleshoot NIC
+	- Diagram of the network path
+3. Client Machine
+	- Restart and Update
+	- Firewalls
+	- Malware
+	- Troubleshoot NIC
 3. Domain Controller
-	a. DHCP Server
-	b. DHCP Client Machine Troubleshooting
-	c. DNS Server
-	d. DNS Client Troubleshooting
+	- DHCP Server
+	- DHCP Client Machine Troubleshooting
+	- DNS Server
+	- DNS Client Troubleshooting
 4. Router / Default Gateway
 5. ISP Network
 6. Website Is Down
