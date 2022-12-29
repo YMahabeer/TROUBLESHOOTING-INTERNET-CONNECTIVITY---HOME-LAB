@@ -169,23 +169,16 @@ Let’s start the troubleshooting process with the client machine which has inte
 
     **Boot Machine from Known Good State**    
     If you have determined that that the issue could be software based, then you can booth the machine using a known good backup or perform a system restore. This is the fastest path to resolving the issue and will work most of the time if it’s a software problem.
+      
       1. **Restore from System Restore Point**  
-      You should first try to perform a system restore if you have not created any backups of your system, or you recently installed new programs or updates onto your system.
-
+      You should first try to perform a system restore if you have not created any backups of your system, or you recently installed new programs or updates onto your system.<br><br/>  
       If system protection is not turned on, then you will not have any restore points and will not be able to use this method to restore the machine.  
-      ![image](https://user-images.githubusercontent.com/121589466/209910982-fd8e008e-21d7-47f8-902f-bcc7614ef3d8.png)
-
-
-      To perform a system restore, open Control Panel. Then in the control panel search box, search “recovery”. Select Recovery in the results. 
-      ![image](https://user-images.githubusercontent.com/121589466/209910989-51a0a7ee-79c8-44ae-9ce1-b919fdab83b8.png)
-
-
+      ![image](https://user-images.githubusercontent.com/121589466/209910982-fd8e008e-21d7-47f8-902f-bcc7614ef3d8.png)<br><br/>  
+      To perform a system restore, open Control Panel. Then in the control panel search box, search “recovery”. Select Recovery in the results.   
+      ![image](https://user-images.githubusercontent.com/121589466/209910989-51a0a7ee-79c8-44ae-9ce1-b919fdab83b8.png)<br><br/>
       Click open system restore.  
-      ![image](https://user-images.githubusercontent.com/121589466/209911001-f7163922-d8ce-482a-85bc-27bfb0c6354e.png)
-
-
-      Click Next to go to the next page. You will see a list of system restore points. Select the one that you want to use to restore your system to. Then select Scan for affected programs. You will see a list of items which will be deleted if you proceed with the system restore. If you are ok with those items being deleted, then select close -> Next -> Finish.
-
+      ![image](https://user-images.githubusercontent.com/121589466/209911001-f7163922-d8ce-482a-85bc-27bfb0c6354e.png)<br><br/>
+      Click Next to go to the next page. You will see a list of system restore points. Select the one that you want to use to restore your system to. Then select Scan for affected programs. You will see a list of items which will be deleted if you proceed with the system restore. If you are ok with those items being deleted, then select close -> Next -> Finish.<br><br/>
       2. **Resetting PC**    
       This is another method to use if system restore didn’t work. This option allows you to reinstall windows while keeping your files. You can do this from the settings or logon screen. 
 
