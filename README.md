@@ -155,7 +155,7 @@ Let’s start the troubleshooting process with the client machine which has inte
     e. **Resolve Hardware Related Problems**   
     Start with the most obvious culprit. Is the ethernet cable properly plugged into the port. Is it showing signs of damage. You might have to try a new cable if you suspect it’s a problem with the cable. Try to shake the cable when its plugged in. Is it in firmly or is it loose? When shaking the cable, does the LED on the port turn on as you move the cable. If it does, then it could be a bad port.
 
-    If the issue is not the cable, then you will have to replace the NIC card or motherboard if it is integrated. Before you do that however, you can insert a known good NIC card into the machine to see if that works. If the issue is resolved, then it is faulty hardware causing the problems.
+    If the issue is not the cable, then you will have to replace the NIC card or motherboard if it is integrated. Before you do that however, you can insert a known good NIC card into the machine to see if that works. If the issue is resolved, then it is faulty hardware causing the problems.   
 
       i. **Hard Drive Swap**   
       A great way to determine if the connectivity issues are hardware verses software related is to boot into a different operating system on the same machine. You can do this by swapping the hard drive in the machine with a known good one. If the system booths and there are no issues, then it’s a software issue. If it is still not fixed, then you know it’s a hardware problem.
@@ -168,66 +168,66 @@ Let’s start the troubleshooting process with the client machine which has inte
       i. **Boot Machine from Known Good State**    
       If you have determined that that the issue could be software based, then you can booth the machine using a known good backup or perform a system restore. This is the fastest path to resolving the issue and will work most of the time if it’s a software problem.
 
-        1. **Restore from System Restore Point**   
-        You should first try to perform a system restore if you have not created any backups of your system, or you recently installed new programs or updates onto your system.
+      1. **Restore from System Restore Point**   
+      You should first try to perform a system restore if you have not created any backups of your system, or you recently installed new programs or updates onto your system.
 
-        If system protection is not turned on, then you will not have any restore points and will not be able to use this method to restore the machine.  
-        ![image](https://user-images.githubusercontent.com/121589466/209910982-fd8e008e-21d7-47f8-902f-bcc7614ef3d8.png)
-
-
-        To perform a system restore, open Control Panel. Then in the control panel search box, search “recovery”. Select Recovery in the results. 
-        ![image](https://user-images.githubusercontent.com/121589466/209910989-51a0a7ee-79c8-44ae-9ce1-b919fdab83b8.png)
+      If system protection is not turned on, then you will not have any restore points and will not be able to use this method to restore the machine.  
+      ![image](https://user-images.githubusercontent.com/121589466/209910982-fd8e008e-21d7-47f8-902f-bcc7614ef3d8.png)
 
 
-        Click open system restore.  
-        ![image](https://user-images.githubusercontent.com/121589466/209911001-f7163922-d8ce-482a-85bc-27bfb0c6354e.png)
+      To perform a system restore, open Control Panel. Then in the control panel search box, search “recovery”. Select Recovery in the results. 
+      ![image](https://user-images.githubusercontent.com/121589466/209910989-51a0a7ee-79c8-44ae-9ce1-b919fdab83b8.png)
 
 
-        Click Next to go to the next page. You will see a list of system restore points. Select the one that you want to use to restore your system to. Then select Scan for affected programs. You will see a list of items which will be deleted if you proceed with the system restore. If you are ok with those items being deleted, then select close -> Next -> Finish.
-
-        2. **Resetting PC**    
-        This is another method to use if system restore didn’t work. This option allows you to reinstall windows while keeping your files. You can do this from the settings or logon screen. 
-
-        Unlike system restore, this method will delete all programs and change all settings back to default.
-
-        Reset your machine by going to Settings -> Update & Security -> Recovery.  
-        ![image](https://user-images.githubusercontent.com/121589466/209911017-91e2d82d-de5b-4817-9d74-0540b4a689cd.png)
+      Click open system restore.  
+      ![image](https://user-images.githubusercontent.com/121589466/209911001-f7163922-d8ce-482a-85bc-27bfb0c6354e.png)
 
 
-        Under Reset this PC. Select Get Started.  
-        ![image](https://user-images.githubusercontent.com/121589466/209911022-b68d2a49-9cf7-46a2-8ef6-628f09a3d963.png)
+      Click Next to go to the next page. You will see a list of system restore points. Select the one that you want to use to restore your system to. Then select Scan for affected programs. You will see a list of items which will be deleted if you proceed with the system restore. If you are ok with those items being deleted, then select close -> Next -> Finish.
+
+      2. **Resetting PC**    
+      This is another method to use if system restore didn’t work. This option allows you to reinstall windows while keeping your files. You can do this from the settings or logon screen. 
+
+      Unlike system restore, this method will delete all programs and change all settings back to default.
+
+      Reset your machine by going to Settings -> Update & Security -> Recovery.  
+      ![image](https://user-images.githubusercontent.com/121589466/209911017-91e2d82d-de5b-4817-9d74-0540b4a689cd.png)
 
 
-        Select Keep my files.  
-        ![image](https://user-images.githubusercontent.com/121589466/209911026-4adb7a78-fa2b-43d4-8870-f116d557d0e2.png)
+      Under Reset this PC. Select Get Started.  
+      ![image](https://user-images.githubusercontent.com/121589466/209911022-b68d2a49-9cf7-46a2-8ef6-628f09a3d963.png)
 
 
-        This process will keep your files but delete all programs and change settings back to default. Click the Reset button to begin the process.  
-        ![image](https://user-images.githubusercontent.com/121589466/209911036-8b34ad00-b53b-4349-a9ee-00242f72a31d.png)
+      Select Keep my files.  
+      ![image](https://user-images.githubusercontent.com/121589466/209911026-4adb7a78-fa2b-43d4-8870-f116d557d0e2.png)
 
 
-        3. **Reinstall OS Using Installation Media**   
-        If system restore and resetting your machine didn’t work, then reinstalling the OS using Installation Media is the next option to try. 
-
-        First you need to create a Windows 10 installation media. You will need to perform this process on another machine with a working internet connection. You can then transfer the installation media to the machine with connectivity issues. 
-
-        Go to the link below and click Download Now under Create Windows Installation Media.
-        https://www.microsoft.com/en-us/software-download/windows10  
-        ![image](https://user-images.githubusercontent.com/121589466/209911045-f44b50dd-0bc8-40aa-917b-8e42c39641b2.png)
+      This process will keep your files but delete all programs and change settings back to default. Click the Reset button to begin the process.  
+      ![image](https://user-images.githubusercontent.com/121589466/209911036-8b34ad00-b53b-4349-a9ee-00242f72a31d.png)
 
 
-        Once downloaded, double-click and open the installation media creation tool. Select Create installation media for another PC. Go through the standard windows installation process of choosing your preferred language, edition, etc. Save it to a USB drive and connect that to the machine with connectivity issues.
+      3. **Reinstall OS Using Installation Media**   
+      If system restore and resetting your machine didn’t work, then reinstalling the OS using Installation Media is the next option to try. 
 
-        On the machine with connectivity issues, open file explorer and find the drive with the installation media on it. Double click the installation media to launch it and begin the process.
+      First you need to create a Windows 10 installation media. You will need to perform this process on another machine with a working internet connection. You can then transfer the installation media to the machine with connectivity issues. 
 
-        Select Change what to keep. Then select Keep personal files and Apps. Then select Next. Click Install to begin the installation process.
+      Go to the link below and click Download Now under Create Windows Installation Media.
+      https://www.microsoft.com/en-us/software-download/windows10  
+      ![image](https://user-images.githubusercontent.com/121589466/209911045-f44b50dd-0bc8-40aa-917b-8e42c39641b2.png)
 
-        4.	### Booth From Known Good Backup    
-        If you regularly save backups of your machines using the backup and restore feature, then you can simply restore your system from a backup or system image that you know is good.
 
-        To restore from a backup, hold shift while you press the restart button in the start menu. You can now click troubleshoot -> Advanced Options -> See more recovery options -> system image recovery.
+      Once downloaded, double-click and open the installation media creation tool. Select Create installation media for another PC. Go through the standard windows installation process of choosing your preferred language, edition, etc. Save it to a USB drive and connect that to the machine with connectivity issues.
 
-        You can now follow the on-screen instructions and select the system image that you want to use for recovery.
+      On the machine with connectivity issues, open file explorer and find the drive with the installation media on it. Double click the installation media to launch it and begin the process.
+
+      Select Change what to keep. Then select Keep personal files and Apps. Then select Next. Click Install to begin the installation process.
+
+      4.	### Booth From Known Good Backup    
+      If you regularly save backups of your machines using the backup and restore feature, then you can simply restore your system from a backup or system image that you know is good.
+
+      To restore from a backup, hold shift while you press the restart button in the start menu. You can now click troubleshoot -> Advanced Options -> See more recovery options -> system image recovery.
+
+      You can now follow the on-screen instructions and select the system image that you want to use for recovery.
 
       ii. **Troubleshooting Network Adapter Drivers**  
       You can use Device Manager to fix software issues related to network adapter drivers. 
@@ -263,22 +263,22 @@ Let’s start the troubleshooting process with the client machine which has inte
 
 
 
-        1. **Toggle Off and On Network Drivers **  
-        Just like how turning a machine off and then on can solve many problems, the same can happen with devices in device manager.
+      1. **Toggle Off and On Network Drivers **  
+      Just like how turning a machine off and then on can solve many problems, the same can happen with devices in device manager.
 
-        To do this, right click on the Network adapter and select Disable device. Then right click on it again and select Enable device.  
-        ![image](https://user-images.githubusercontent.com/121589466/209911147-2efda369-6327-426c-9c6a-7bf435e8010b.png)
-
-
-        2. **Reinstall Network Adapter Drivers**   
-        You can fix network adapter driver issues by reinstalling or updating them. You will have to first find the driver on the manufactures website and download it. You can try searching the name of the driver in google and you will find the download for it.
-
-        Once you have downloaded the driver, right click on the adapter and select Update driver.  
-        ![image](https://user-images.githubusercontent.com/121589466/209911153-d5904d41-721a-4963-a0f8-e1d9801620b4.png)
+      To do this, right click on the Network adapter and select Disable device. Then right click on it again and select Enable device.  
+      ![image](https://user-images.githubusercontent.com/121589466/209911147-2efda369-6327-426c-9c6a-7bf435e8010b.png)
 
 
-        Then select Browse my computer for drivers. You can now navigate to where you saved the driver you downloaded earlier.  
-        ![image](https://user-images.githubusercontent.com/121589466/209911160-821c6fe9-94b3-4188-a5ac-7717831b292f.png)
+      2. **Reinstall Network Adapter Drivers**   
+      You can fix network adapter driver issues by reinstalling or updating them. You will have to first find the driver on the manufactures website and download it. You can try searching the name of the driver in google and you will find the download for it.
+
+      Once you have downloaded the driver, right click on the adapter and select Update driver.  
+      ![image](https://user-images.githubusercontent.com/121589466/209911153-d5904d41-721a-4963-a0f8-e1d9801620b4.png)
+
+
+      Then select Browse my computer for drivers. You can now navigate to where you saved the driver you downloaded earlier.  
+      ![image](https://user-images.githubusercontent.com/121589466/209911160-821c6fe9-94b3-4188-a5ac-7717831b292f.png)
 
 
       iii. **Reset Winsock**   
