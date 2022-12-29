@@ -80,7 +80,7 @@ Let’s start the troubleshooting process with the client machine which has inte
       ![image](https://user-images.githubusercontent.com/121589466/209909830-bc38d0d6-ba72-4b72-a06c-e52e01238c1c.png)
 
 
-      Navigate to Computer Configuration -> Policies -> Windows Settings -> Security Settings -> Windows Firewall with Advanced Security -> Windows Defender Firewall with Advanced Security – LDAP. 
+      Navigate to Computer Configuration -> Policies -> Windows Settings -> Security Settings -> Windows Firewall with Advanced Security -> Windows Defender Firewall with Advanced Security – LDAP.   
       ![image](https://user-images.githubusercontent.com/121589466/209909842-b8c85107-99b9-4c7b-9a03-f557b561a166.png)
 
 
