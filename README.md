@@ -171,56 +171,55 @@ Let’s start the troubleshooting process with the client machine which has inte
     If you have determined that that the issue could be software based, then you can booth the machine using a known good backup or perform a system restore. This is the fastest path to resolving the issue and will work most of the time if it’s a software problem.
       
       1. **Restore from System Restore Point**  
-      You should first try to perform a system restore if you have not created any backups of your system, or you recently installed new programs or updates onto your system.<br><br/>  
+      You should first try to perform a system restore if you have not created any backups of your system, or you recently installed new programs or updates onto your system.
+      <br><br/>
       If system protection is not turned on, then you will not have any restore points and will not be able to use this method to restore the machine.  
-      ![image](https://user-images.githubusercontent.com/121589466/209910982-fd8e008e-21d7-47f8-902f-bcc7614ef3d8.png)<br><br/>  
-      To perform a system restore, open Control Panel. Then in the control panel search box, search “recovery”. Select Recovery in the results.   
-      ![image](https://user-images.githubusercontent.com/121589466/209910989-51a0a7ee-79c8-44ae-9ce1-b919fdab83b8.png)<br><br/>
+      ![image](https://user-images.githubusercontent.com/121589466/209910982-fd8e008e-21d7-47f8-902f-bcc7614ef3d8.png)  
+      To perform a system restore, open Control Panel. Then in the control panel search box, search “recovery”. Select Recovery in the results.  
+      ![image](https://user-images.githubusercontent.com/121589466/209910989-51a0a7ee-79c8-44ae-9ce1-b919fdab83b8.png)  
       Click open system restore.  
-      ![image](https://user-images.githubusercontent.com/121589466/209911001-f7163922-d8ce-482a-85bc-27bfb0c6354e.png)<br><br/>
-      Click Next to go to the next page. You will see a list of system restore points. Select the one that you want to use to restore your system to. Then select Scan for affected programs. You will see a list of items which will be deleted if you proceed with the system restore. If you are ok with those items being deleted, then select close -> Next -> Finish.<br><br/>
+      ![image](https://user-images.githubusercontent.com/121589466/209911001-f7163922-d8ce-482a-85bc-27bfb0c6354e.png)  
+      Click Next to go to the next page. You will see a list of system restore points. Select the one that you want to use to restore your system to. Then select Scan for affected programs. You will see a list of items which will be deleted if you proceed with the system restore. If you are ok with those items being deleted, then select close -> Next -> Finish.
+      
       2. **Resetting PC**    
-      This is another method to use if system restore didn’t work. This option allows you to reinstall windows while keeping your files. You can do this from the settings or logon screen. 
-
+      This is another method to use if system restore didn’t work. This option allows you to reinstall windows while keeping your files. You can do this from the settings or logon screen.
+      <br><br/>
       Unlike system restore, this method will delete all programs and change all settings back to default.
-
+      <br><br/>
       Reset your machine by going to Settings -> Update & Security -> Recovery.  
       ![image](https://user-images.githubusercontent.com/121589466/209911017-91e2d82d-de5b-4817-9d74-0540b4a689cd.png)
-
-
+      <br><br/>
       Under Reset this PC. Select Get Started.  
       ![image](https://user-images.githubusercontent.com/121589466/209911022-b68d2a49-9cf7-46a2-8ef6-628f09a3d963.png)
-
-
+      <br><br/>
       Select Keep my files.  
       ![image](https://user-images.githubusercontent.com/121589466/209911026-4adb7a78-fa2b-43d4-8870-f116d557d0e2.png)
-
-
+      <br><br/>
       This process will keep your files but delete all programs and change settings back to default. Click the Reset button to begin the process.  
       ![image](https://user-images.githubusercontent.com/121589466/209911036-8b34ad00-b53b-4349-a9ee-00242f72a31d.png)
 
 
       3. **Reinstall OS Using Installation Media**   
       If system restore and resetting your machine didn’t work, then reinstalling the OS using Installation Media is the next option to try. 
-
+      <br><br/>
       First you need to create a Windows 10 installation media. You will need to perform this process on another machine with a working internet connection. You can then transfer the installation media to the machine with connectivity issues. 
-
+      <br><br/>
       Go to the link below and click Download Now under Create Windows Installation Media.
       https://www.microsoft.com/en-us/software-download/windows10  
       ![image](https://user-images.githubusercontent.com/121589466/209911045-f44b50dd-0bc8-40aa-917b-8e42c39641b2.png)
-
-
+      <br><br/>
       Once downloaded, double-click and open the installation media creation tool. Select Create installation media for another PC. Go through the standard windows installation process of choosing your preferred language, edition, etc. Save it to a USB drive and connect that to the machine with connectivity issues.
-
+      <br><br/>
       On the machine with connectivity issues, open file explorer and find the drive with the installation media on it. Double click the installation media to launch it and begin the process.
-
+      <br><br/>
       Select Change what to keep. Then select Keep personal files and Apps. Then select Next. Click Install to begin the installation process.
+
 
       4. **Booth From Known Good Backup**      
       If you regularly save backups of your machines using the backup and restore feature, then you can simply restore your system from a backup or system image that you know is good.
-
+      <br><br/>
       To restore from a backup, hold shift while you press the restart button in the start menu. You can now click troubleshoot -> Advanced Options -> See more recovery options -> system image recovery.
-
+      <br><br/>
       You can now follow the on-screen instructions and select the system image that you want to use for recovery.
       
       
@@ -232,60 +231,50 @@ Let’s start the troubleshooting process with the client machine which has inte
     To do this, open PowerShell with admin rights.  
     ![image](https://user-images.githubusercontent.com/121589466/209911076-e69aa757-b13a-4cc0-b1ef-d79728377ec9.png)
 
-
     Then type in devmgmt.msc and press enter to launch device manager with admin rights. This will give you the permissions needed to uninstall and install drivers.  
     ![image](https://user-images.githubusercontent.com/121589466/209911096-9e7eb23f-7b27-4049-a2af-ff982833f935.png)
-
 
     With Device Manger open, scroll down to Network adapters. Expand the menu to see all adapters. If there are any issues, then the adapter might be missing completely or will show an error.  
     ![image](https://user-images.githubusercontent.com/121589466/209911106-a479ba98-7c2f-40dc-8e4e-1f7b1aa83ffa.png)
 
-
     If there is an issue, then there will be a small hazard triangle over the adapter icon.   
     ![image](https://user-images.githubusercontent.com/121589466/209911118-e20e142c-40c2-4d4f-88e2-d89f9b31942c.png)
-
 
     You can get more information about an adapter by right clicking on the adapter and selecting Properties.  
     ![image](https://user-images.githubusercontent.com/121589466/209911124-8f9df9fd-643e-497a-8649-5b3fb8bb1906.png)
 
-
     Here you can check the status of the adapter. If the device is working properly then it will show it is working properly, like below.  
     ![image](https://user-images.githubusercontent.com/121589466/209911130-3e610209-f713-4222-a044-f297271237c1.png)
-
 
     If it’s not working properly then you will see a display of the error.  
     ![image](https://user-images.githubusercontent.com/121589466/209911140-2b48d31d-09e4-4c3b-8e2b-b8bc4c1bb70d.png)
 
-
-
-      1. **Toggle Off and On Network Drivers **  
+      1. **Toggle Off and On Network Drivers**  
       Just like how turning a machine off and then on can solve many problems, the same can happen with devices in device manager.
-
+      <br><br/>
       To do this, right click on the Network adapter and select Disable device. Then right click on it again and select Enable device.  
       ![image](https://user-images.githubusercontent.com/121589466/209911147-2efda369-6327-426c-9c6a-7bf435e8010b.png)
 
 
       2. **Reinstall Network Adapter Drivers**   
       You can fix network adapter driver issues by reinstalling or updating them. You will have to first find the driver on the manufactures website and download it. You can try searching the name of the driver in google and you will find the download for it.
-
+      <br><br/>
       Once you have downloaded the driver, right click on the adapter and select Update driver.  
       ![image](https://user-images.githubusercontent.com/121589466/209911153-d5904d41-721a-4963-a0f8-e1d9801620b4.png)
-
-
+      <br><br/>
       Then select Browse my computer for drivers. You can now navigate to where you saved the driver you downloaded earlier.  
       ![image](https://user-images.githubusercontent.com/121589466/209911160-821c6fe9-94b3-4188-a5ac-7717831b292f.png)
       
       
-      
-      **Reset Winsock**   
-      This is an API which operates between applications and the underlying communication protocols.  Resetting its catalog back to the default settings might help solve network adapter problems.
+    **Reset Winsock**   
+    This is an API which operates between applications and the underlying communication protocols.  Resetting its catalog back to the default settings might help solve network adapter problems.
 
-      First open PowerShell with Admin privileges. Enter the command “netsh winsock reset” and press enter to execute it. You can now restart the machine to complete the process.  
-      ![image](https://user-images.githubusercontent.com/121589466/209911169-ec04306f-900e-427a-97ab-2750d0a1e57e.png)
-
+    First open PowerShell with Admin privileges. Enter the command “netsh winsock reset” and press enter to execute it. You can now restart the machine to complete the process.  
+    ![image](https://user-images.githubusercontent.com/121589466/209911169-ec04306f-900e-427a-97ab-2750d0a1e57e.png)
 
 
-Domain Controller
+
+## Domain Controller  
 The next step in the path is the domain controller. This machine will typically have all client machines on the private internal network connect to it. This allows the organization to control all traffic in and out of the network. This machine will also commonly serve as the DHCP and DNS servers for the network.
 
 You can trace the path from a client machine all the way to a website using the tracert command in PowerShell. The most common way this is done is to use trace route to a popular website like google.com. The command for this is “tracert google.com”. Below is the result from my test network to google.com.
