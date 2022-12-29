@@ -40,11 +40,10 @@ The complete path is Client Machine -> Domain Controller [DHCP Server & DNS Serv
 Let’s start the troubleshooting process with the client machine which has internet connectivity issues. It’s important to always question the obvious. Sometimes the problem can be caused by something as simple as a disconnected ethernet cable. Here are some other things to check on the client machine before you start troubleshooting the network.
 
 1.	### Restart and Update  
-    a.	Software can just break on its own sometimes. Start by trying to restart the program you are using. Internet browsers often have many tabs open and use a lot of resources. Closing and restarting the browser is a quick option to try. Also closing all programs and restarting the machine will fix issues more often than you think.
+      a. Software can just break on its own sometimes. Start by trying to restart the program you are using. Internet browsers often have many tabs open and use a lot of resources. Closing and restarting the browser is a quick option to try. Also closing all programs and restarting the machine will fix issues more often than you think.
 
-    b.	Updating the applications and the operating system on your machine can also be an easy fix. There might be bug fixes and critical issues that are patched with the latest updates. Updates will also fix any files that may have been damaged or missing. Updating the operating system is also one of those methods that will often fix more problems than you think.
- 	
-    ![image](https://user-images.githubusercontent.com/121589466/209907384-697de7e9-35ed-4301-92c9-dc93a034ac5f.png)
+      b. Updating the applications and the operating system on your machine can also be an easy fix. There might be bug fixes and critical issues that are patched with the latest updates. Updates will also fix any files that may have been damaged or missing. Updating the operating system is also one of those methods that will often fix more problems than you think.  
+      ![image](https://user-images.githubusercontent.com/121589466/209907384-697de7e9-35ed-4301-92c9-dc93a034ac5f.png)
 
 
 2.	### Firewalls  
@@ -230,7 +229,7 @@ Let’s start the troubleshooting process with the client machine which has inte
 
         You can now follow the on-screen instructions and select the system image that you want to use for recovery.
 
-      ii.	### Troubleshooting Network Adapter Drivers
+      ii. **Troubleshooting Network Adapter Drivers**
       You can use Device Manager to fix software issues related to network adapter drivers. 
 
       You will need to open device manager with Admin right so that you have the correct permissions to uninstall and reinstall the correct drivers.
@@ -264,14 +263,14 @@ Let’s start the troubleshooting process with the client machine which has inte
 
 
 
-        1.	### Toggle Off and On Network Drivers   
+        1. **Toggle Off and On Network Drivers **  
         Just like how turning a machine off and then on can solve many problems, the same can happen with devices in device manager.
 
         To do this, right click on the Network adapter and select Disable device. Then right click on it again and select Enable device.  
         ![image](https://user-images.githubusercontent.com/121589466/209911147-2efda369-6327-426c-9c6a-7bf435e8010b.png)
 
 
-        2.	### Reinstall Network Adapter Drivers   
+        2. **Reinstall Network Adapter Drivers**   
         You can fix network adapter driver issues by reinstalling or updating them. You will have to first find the driver on the manufactures website and download it. You can try searching the name of the driver in google and you will find the download for it.
 
         Once you have downloaded the driver, right click on the adapter and select Update driver.  
@@ -282,11 +281,11 @@ Let’s start the troubleshooting process with the client machine which has inte
         ![image](https://user-images.githubusercontent.com/121589466/209911160-821c6fe9-94b3-4188-a5ac-7717831b292f.png)
 
 
-        iii.	### Reset Winsock   
-        This is an API which operates between applications and the underlying communication protocols.  Resetting its catalog back to the default settings might help solve network adapter problems.
+      iii. **Reset Winsock**   
+      This is an API which operates between applications and the underlying communication protocols.  Resetting its catalog back to the default settings might help solve network adapter problems.
 
-        First open PowerShell with Admin privileges. Enter the command “netsh winsock reset” and press enter to execute it. You can now restart the machine to complete the process.  
-        ![image](https://user-images.githubusercontent.com/121589466/209911169-ec04306f-900e-427a-97ab-2750d0a1e57e.png)
+      First open PowerShell with Admin privileges. Enter the command “netsh winsock reset” and press enter to execute it. You can now restart the machine to complete the process.  
+      ![image](https://user-images.githubusercontent.com/121589466/209911169-ec04306f-900e-427a-97ab-2750d0a1e57e.png)
 
 
 
