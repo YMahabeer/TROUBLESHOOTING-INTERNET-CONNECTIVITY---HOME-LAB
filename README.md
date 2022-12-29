@@ -26,7 +26,7 @@ The goal of this lab isn’t to teach you the fastest way to resolve network con
 7. Conclusion
 
 
-Lab Setup
+### Lab Setup
 This lab will consist of two virtual machines running on Oracle Virtual Box. One machine will run Windows Server 2019 and will function as the domain controller. This machine will also serve as the DHCP server and DNS server. The second machine will run Windows 10 Enterprise and will function as a client machine. It will connect to the domain controller through an internal private network.
 
 A network packet will commonly take a path like the one in the diagram below. This will be the path that you will attempt to troubleshoot in this lab. 
@@ -35,19 +35,19 @@ The complete path is Client Machine -> Domain Controller [DHCP Server & DNS Serv
  
 
 
-Client Machine
+### Client Machine
 Let’s start the troubleshooting process with the client machine which has internet connectivity issues. It’s important to always question the obvious. Sometimes the problem can be caused by something as simple as a disconnected ethernet cable. Here are some other things to check on the client machine before you start troubleshooting the network.
 
-1.	Restart and Update
+1.	### Restart and Update
 a.	Software can just break on its own sometimes. Start by trying to restart the program you are using. Internet browsers often have many tabs open and use a lot of resources. Closing and restarting the browser is a quick option to try. Also closing all programs and restarting the machine will fix issues more often than you think.
 
 b.	Updating the applications and the operating system on your machine can also be an easy fix. There might be bug fixes and critical issues that are patched with the latest updates. Updates will also fix any files that may have been damaged or missing. Updating the operating system is also one of those methods that will often fix more problems than you think.
  
 
-2.	Firewalls
+2.	### Firewalls
 The firewall is also commonly responsible for many issues with connectivity. It can perceive an outgoing or incoming connection to an application as malicious and block it. You will have to allow the app through the firewall or add a new outgoing or incoming rule to the firewall to resolve this issue.
 
-a.	Allow Applications Through Firewall	
+a.	### Allow Applications Through Firewall	
 Allow the application through the firewall by going to Settings -> Windows Security -> Firewall & Network Protection.
  
 
@@ -57,7 +57,7 @@ Then you click on Allow an app through firewall.
 Scroll down and find the application with connectivity issues. You can click the Change settings button then check the private and public boxes as needed to allow the application through the firewall.
  
 
-b.	Add New Firewall Rules
+b.	### Add New Firewall Rules
 You can also edit or add new outgoing or inbound firewall rules. This will allow you to edit what ports and protocols are allowed or blocked. You do this by going to the domain controller and opening Server Manager. Go to Tools -> Group Policy Management.
  
 
@@ -94,26 +94,26 @@ Give the rule a name. Then click to the end to complete the process.
 You can now see the new rule in the outbound rules page in Group Policy Management Editor. You can edit or disable the new rule from here.
  
 
-c.	Reset Firewall Rules
+c.	### Reset Firewall Rules
 If you believe that a firewall rule may be the cause of network connectivity issues, then you can try to temporally turn off the firewall to see if the connection is then restored. 
 
 If you can’t identity which firewall rule is causing the issue, you can reset the firewall rules back to their default settings. You can do this by using the command “netsh advfirewall reset”.
  
 
-3.	Malware
+3.	### Malware
 Malware on a client machine can cause it to have connectivity issues. This can be the malware trying to prevent the user from attempting to remove it. The malware will try to stop the user from updating their machine or downloading a program to get rid of the malware. The malware can also consume all available resources or connection bandwidth in its attempt to send data from the machine to a remote server. This infection might spread to other machines so you will have to isolate this machine and immediately elevate this issue to resolve it as soon as possible.
 
-4.	Troubleshoot NIC
+4.	### Troubleshoot NIC
 If you have tried everything and can’t solve the connection issues, then the issue might be with the NIC on the client machine. It could be a software or even hardware related issue.
 
-a.	Signs of Faulty NIC
+a.	### Signs of Faulty NIC
 A sign that the NIC is going bad is if the connection is intermittent. This can show up with websites being intermittently slow to load. Downloads failing halfway. You can also test by going to an internet speed test website and seeing if the connection speed is consistent verses jumping up or down.
 
-b.	Network Adapter Options
+b.	### Network Adapter Options
 You can also go to settings -> Network & Internet -> Change adapter options. Here you can look to see if there are any obvious issues. You can see if the NIC adapter is missing entirely or is displaying an error that might give you a hint of what the issue is.
  
 
-c.	Device Manager
+c.	### Device Manager
 You can also check if the Network adapter is identified by the client machine by using device manager. Open Device Manger and scroll down to Network adapters. Expand the menu to see all adapters. If there are any issues, then the adapter might be missing completely or will show an error.
  
 
@@ -123,29 +123,29 @@ You can get more information by right clicking on an adapter and selecting Prope
 Here you can check the status of the adapter. If it is not working properly then you will see a display of the error.
  
 
-d.	Ping Test
+d.	### Ping Test
 The more direct way to test if a NIC is faulty is to use a ping test. You do this by having the client machine ping itself. It will send packets to the NIC card and display the results.
 
 To start the process, open the command prompt program or PowerShell and type “ping 127.0.0.1”. Then press enter to run the command. If the results show something similar to “Packets: Sent=4, Receive=0, Lost=4”, then the NIC is faulty. If the NIC is good, there should be no lost packets. You can run this test a few times to get a view of how often packets are being lost.
  
 
-e.	Resolve Hardware Related Problems
+e.	### Resolve Hardware Related Problems
 Start with the most obvious culprit. Is the ethernet cable properly plugged into the port. Is it showing signs of damage. You might have to try a new cable if you suspect it’s a problem with the cable. Try to shake the cable when its plugged in. Is it in firmly or is it loose? When shaking the cable, does the LED on the port turn on as you move the cable. If it does, then it could be a bad port.
 
 If the issue is not the cable, then you will have to replace the NIC card or motherboard if it is integrated. Before you do that however, you can insert a known good NIC card into the machine to see if that works. If the issue is resolved, then it is faulty hardware causing the problems.
 
-i.	Hard Drive Swap
+i.	### Hard Drive Swap
 A great way to determine if the connectivity issues are hardware verses software related is to boot into a different operating system on the same machine. You can do this by swapping the hard drive in the machine with a known good one. If the system booths and there are no issues, then it’s a software issue. If it is still not fixed, then you know it’s a hardware problem.
 
 Most of the time the machine will find the new drive but if you are having issues then you can press the ESC/F10/F12 keys during boot. This will open the boot menu and allow you to manually select which drive to booth from.
 
-f.	Resolve Software Related Problems
+f.	### Resolve Software Related Problems
 If the issues are not hardware related, then they might be software related. Here are a few ways to resolve the software related issues.
 
-i.	Boot Machine from Known Good State
+i.	### Boot Machine from Known Good State
 If you have determined that that the issue could be software based, then you can booth the machine using a known good backup or perform a system restore. This is the fastest path to resolving the issue and will work most of the time if it’s a software problem.
 
-1.	Restore from System Restore Point
+1.	### Restore from System Restore Point
 You should first try to perform a system restore if you have not created any backups of your system, or you recently installed new programs or updates onto your system.
 
 If system protection is not turned on, then you will not have any restore points and will not be able to use this method to restore the machine.
@@ -159,7 +159,7 @@ Click open system restore.
 
 Click Next to go to the next page. You will see a list of system restore points. Select the one that you want to use to restore your system to. Then select Scan for affected programs. You will see a list of items which will be deleted if you proceed with the system restore. If you are ok with those items being deleted, then select close -> Next -> Finish.
 
-2.	Resetting PC
+2.	### Resetting PC
 This is another method to use if system restore didn’t work. This option allows you to reinstall windows while keeping your files. You can do this from the settings or logon screen. 
 
 Unlike system restore, this method will delete all programs and change all settings back to default.
@@ -176,7 +176,7 @@ Select Keep my files.
 This process will keep your files but delete all programs and change settings back to default. Click the Reset button to begin the process.
  
 
-3.	Reinstall OS Using Installation Media
+3.	### Reinstall OS Using Installation Media
 If system restore and resetting your machine didn’t work, then reinstalling the OS using Installation Media is the next option to try. 
 
 First you need to create a Windows 10 installation media. You will need to perform this process on another machine with a working internet connection. You can then transfer the installation media to the machine with connectivity issues. 
@@ -191,14 +191,14 @@ On the machine with connectivity issues, open file explorer and find the drive w
 
 Select Change what to keep. Then select Keep personal files and Apps. Then select Next. Click Install to begin the installation process.
 
-4.	Booth From Known Good Backup
+4.	### Booth From Known Good Backup
 If you regularly save backups of your machines using the backup and restore feature, then you can simply restore your system from a backup or system image that you know is good.
 
 To restore from a backup, hold shift while you press the restart button in the start menu. You can now click troubleshoot -> Advanced Options -> See more recovery options -> system image recovery.
 
 You can now follow the on-screen instructions and select the system image that you want to use for recovery.
 
-ii.	Troubleshooting Network Adapter Drivers
+ii.	### Troubleshooting Network Adapter Drivers
 You can use Device Manager to fix software issues related to network adapter drivers. 
 
 You will need to open device manager with Admin right so that you have the correct permissions to uninstall and reinstall the correct drivers.
@@ -225,13 +225,13 @@ If it’s not working properly then you will see a display of the error.
  
 
 
-1.	Toggle Off and On Network Drivers
+1.	### Toggle Off and On Network Drivers
 Just like how turning a machine off and then on can solve many problems, the same can happen with devices in device manager.
 
 To do this, right click on the Network adapter and select Disable device. Then right click on it again and select Enable device.
  
 
-2.	Reinstall Network Adapter Drivers
+2.	### Reinstall Network Adapter Drivers
 You can fix network adapter driver issues by reinstalling or updating them. You will have to first find the driver on the manufactures website and download it. You can try searching the name of the driver in google and you will find the download for it.
 
 Once you have downloaded the driver, right click on the adapter and select Update driver.
@@ -240,7 +240,7 @@ Once you have downloaded the driver, right click on the adapter and select Updat
 Then select Browse my computer for drivers. You can now navigate to where you saved the driver you downloaded earlier.
  
 
-iii.	Reset Winsock
+iii.	### Reset Winsock
 This is an API which operates between applications and the underlying communication protocols.  Resetting its catalog back to the default settings might help solve network adapter problems.
 
 First open PowerShell with Admin privileges. Enter the command “netsh winsock reset” and press enter to execute it. You can now restart the machine to complete the process.
@@ -268,20 +268,20 @@ To troubleshoot the DHCP server, open Server Manager on the domain controller an
 First look to see if the DHCP server is running. If everything is operating fine, then you will see a small green circle with a checkmark in it. If you don’t see the green, then that might be an indicator that something is wrong, and you need to investigate more.
  
 
-a.	Restart Server
+a.	### Restart Server
 The fastest way to attempt to resolve issues with the DHCP server is to stop and then restart it. You do this by right clicking on the server’s name and going to All Tasks, then selecting Restart.
  
 
 You may have to right click on the DHCP server and select refresh to see any updated changes.
  
 
-b.	Authorize Server
+b.	### Authorize Server
 You should also check if the DHCP server is Authorized. DHCP servers which are joined to an active directory domain will typically continue to validate their authorization regularly. If a DHCP server fails to validate its authorization, then it will lose its ability to serve IP addresses. 
 
 You can check if the DHCP server is authorized by right clicking on it and looking to see if there is an option to Unauthorize it. If the server was unauthorized, then there would be an option to authorize it only.
  
 
-c.	Verify IP Address Leases
+c.	### Verify IP Address Leases
 If the DHCP server is working properly then there might be an issue with the IP address leases being given out by the server. First check that the IP address ranges which the server is configured to give out is correct.
 
 Navigate to IPv4 -> Scope -> Address Pool. Check all the available address pools and make sure that they are configured correctly.
@@ -302,7 +302,7 @@ You can now increase the size of the scope to accommodate a larger number of mac
 You can also check the lease duration on this page. If they are too long, then it might take too long for the leases to be freed up and re-enter the pool again.
  
 
-d.	Static IP Addresses
+d.	### Static IP Addresses
 You should also check if there are any devices on the network with a static IP address which have not been excluded from the DHCP scope. If a machine has a static IP address and it is not excluded from the scope, then another device might get assigned that IP address. 
 
 Create a reservation for a device by opening the scope and right clicking on Reservation. Select New Reservation.
@@ -312,7 +312,7 @@ You can then enter the IP address and the MAC address of the device to create th
  
 
 
-2.	DHCP Client Machine Troubleshooting
+2.	### DHCP Client Machine Troubleshooting
 If the DHCP server is working fine but there are still connectivity issues, then the problem is on the client side.
 
 You can get more visibility on the client machine into what might be causing the issues by going to Settings -> network & Internet. Under Advanced Network Settings, select Change Sdapter Options.
@@ -330,39 +330,39 @@ You can now see details about the network adapter on the client machine.
 You can also quickly view the same information by going into PowerShell and typing “ipconfig /all”.
  
 
-a.	Automatic Private IP Address
+a.	### Automatic Private IP Address
 If you see an IPv4 address within the range of 169.254.0.1 to 169.254.255.254, then that is a sign that the machine was given an automatic private IP address. If a machine powers on and can’t contact the DHCP server, then it will automatically give itself an IP address. This will be a private IP address which the machine will not be able to use to connect to the internet. 
 
 To fix this issue, you will have to release that IP address and request a new one from the DHCP server. To do this, open PowerShell and type in “ipconfig /release” to release the current IP address. Then type “ipconfig / renew” to request a new IP address from the DHCP server.
  
 
-b.	Expired IP Address Lease
+b.	### Expired IP Address Lease
 You can also see when the IP address lease was obtained and when it will expire when you check the status of the network adapter. Sometimes a machine will think the IP it has is not expired even though it is. This can happen when a user leaves for vacation and leaves their machine on sleep or hibernate mode. When the user comes back from vacation and tries to start their machine, it will think no time has passed and the lease is still valid.
 
 The fix for this issue is the same as we just used before. Open PowerShell and type in “ipconfig /release” to release the current IP address. Then type “ipconfig / renew” to request a new IP address from the DHCP server. If successful you will get a new IP address and a new lease which is accurate.
  
 
 
-3.	DNS Server
+3.	### DNS Server
 Next let’s troubleshoot DNS server related issues on the domain controller. The DNS server is responsible for name resolution on the network. You can still directly access machines using their IP addresses but that is not human readable. IP addresses can also change so that will make it difficult to communicate with other machines on the network. You will also not be able to navigate to websites using their domain name.
 
 To start troubleshooting the DNS server, open Server manager on the domain controller and go to Tools -> DNS.
  
 
-a.	Restart DNS Server
+a.	### Restart DNS Server
 The quickest way to attempt to solve DNS server related issues is to restart the DNS server. In DNS Manager, right click on the server and select All Tasks -> Restart.
  
 
-b.	Clear DNS Server Cache
+b.	### Clear DNS Server Cache
 You can also then try to clear the DNS server cache. In DNS Manager, right click on the DNS server and select Clear Cache. 
  
 You can also user PowerShell to perform the same task by using the command “dnscmd /clearcache”.
  
 
-4.	DNS Client Troubleshooting
+4.	### DNS Client Troubleshooting
 If the cause of the connectivity issues is not the DNS server, then it is possibly a problem on the client side.
 
-a.	Check DNS Server IP Configuration
+a.	### Check DNS Server IP Configuration
 The first step to troubleshooting DNS issues on a client machine is to check the DNS configuration. You can do this by opening PowerShell and entering the command “ipconfig /all”. You are looking to see if the IP addresses of the DNS servers are correct. 
 
 If there is no IP address for the DNS servers, then there may be an issue contacting the DNS server. You can attempt to fix this by going to the domain controller and restarting the DNS server. Do this by opening Server Manager and go to Tools -> DNS. Then right click on the DNS server and go to All Tasks and select Restart. 
@@ -377,7 +377,7 @@ Select the option 006 DNS Servers. Now you will have the option to enter the cor
 The second way to change the DNS server IP address is to go to settings -> Network & Internet -> Change Adapter Options. Right click on the network adapter and select Properties. Then select Internet Protocol Version 4, then click Properties. You can now change the DNS server IP address to the correct one.
  
 
-b.	Verify DNS Server IP
+b.	### Verify DNS Server IP
 Now that you have checked that the DNS servers are configured with the correct IP addresses, you can now start troubleshooting the connection. Start by trying to ping the DNS servers to double check that the client can reach them. In PowerShell, enter the command ping followed by the IP address of the DNS server. 
  
 
@@ -386,7 +386,7 @@ If you cannot reach the DNS server from the client, then you will have to double
 Another way to verify the DNS server’s IP address is to use the command “Get-DnsClientServerAddress”. This will Display the network adapters on the machine and the IP addresses of the DNS servers associated with those adapters.
  
 
-c.	Verify DNS Server Will Respond Correctly
+c.	### Verify DNS Server Will Respond Correctly
 Now that you can ping the DNS server and confirmed that there is a connection between it and the Client machine, you can now test if the DNS server will respond correctly to requests. You can do this by using the nslookup command. It uses the server’s DNS cache instead of the client’s DNS cache. This will let you know if the server has the correct records. This can also be helpful to verify if the DNS server in which the client machine is pulling the DNS records from is the local DNS server verses one which is outside of the network. The local DNS server will be able to resolve the names of machines on your network. A public DNS server will not be able to.
 
 Query the DNS server by using the nslookup command followed by the name of a machine on your network. Preferably the client machine with connectivity issues.
@@ -414,18 +414,18 @@ You can also try resetting the winsock catalog back to its default settings. Fir
  
 
 
-Router / Default Gateway 
+### Router / Default Gateway 
 With our client machine and domain controller confirmed to be working fine. Let’s look at the next hop in the path out of the network. It is the default gateway. On all networks, you will have to eventually go through the default gateway before you exit the network. The default gateway is often also the router. A router is typically thought as the hardware provided by an ISP which is in most residential homes. In an office setting, any machine which does routing can be considered a router. On many networks the machine which runs the domain controller will also serve as the DNS server, DHCP server, default gateway and the router.
 
 For this lab, the router will be a machine which is configured to be the default gateway and performs the routing for the network. Since it is a machine, the solutions to troubleshooting any other machine will also apply here also. Let’s go through the steps of troubleshooting this machine.
 
-1.	Check Cables and Connections
+1.	### Check Cables and Connections
 First check all cables and connections to the machine to make sure everything is plugged in properly. Check if the ethernet port is plugged in properly. See if the LED light on the ethernet port comes on when you move the cable around. That might be a sign of a bad cable or port.
 
-2.	Restart Machine 
+2.	### Restart Machine 
 If the machine has been running for a long time, then closing all programs and performing a restart might help fix the issue.
 
-3.	Check For Recent Updates
+3.	### Check For Recent Updates
 You should also check to see if there were any updates within the last day or two which were recently installed on the machine. If so, then that might be the cause of the connectivity issues.
 
 Check for the latest updates by going to Settings -> Update and Security. Then click on View Update History. You will see the latest updates and the dates in which they were install on.
@@ -434,26 +434,26 @@ Check for the latest updates by going to Settings -> Update and Security. Then c
 You can uninstall an update by clicking the Uninstall Updates button on the upper left. You can then click on the last update and click the Uninstall button to start the uninstallation process.
  
 
-4.	Turn Off Antivirus and Firewall
+4.	### Turn Off Antivirus and Firewall
 A trigger-happy antivirus or firewall might block the connection for a machine if it sees activity which might be suspicious. You can test if the antivirus or firewall is blocking the connection by temporarily turning them off to see if that has an effect on the connectivity issues.
 
 If you believe that a firewall rule may be the cause of the network connectivity issues but can’t identity which one it is, then you can reset the firewall rules back to their default settings. You can do this by using the command “netsh advfirewall reset”.
  
 
-5.	Check IP Configuration
+5.	### Check IP Configuration
 You should also check that the machine has received an IP address from the DHCP server. You can quickly view the network connectivity information by going into PowerShell and typing “ipconfig /all”. If there is no IP address, then you may have to go through the DHCP troubleshooting steps we did earlier.
  
  
 If there is an issue with the IP address, then you can try to release and then request a new IP address. To do this, open PowerShell and type in “ipconfig /release” to release the current IP address. Then type “ipconfig / renew” to request a new IP address from the DHCP server. 
 
-6.	Check DNS Settings and Configuration
+6.	### Check DNS Settings and Configuration
 You can also check the DNS server configuration when using the “ipconfig /all” command. If the DNS server has the right IP address, then you can try to clear the DNS cache using the command “ipconfig /flushdns” to see if that resolves the connectivity issues.
  
 
 You can also try to clear the DNS cache on the DNS server by using the command “dnscmd /clearcache”.
  
 
-7.	Reset TCP/IP Stack
+7.	### Reset TCP/IP Stack
 One way to fix issues with the default gateway is to reset the TCP/IP stack. This will reset those settings back to default. This can help resolve misconfigured IP settings. You may have to reconfigure the network settings on the machine to get it working again after this. 
 
 To do this, open PowerShell with administrator privileges.
@@ -462,13 +462,13 @@ To do this, open PowerShell with administrator privileges.
 Enter the command “netsh interface ipv4 reset”. You can also enter the command “netsh interface ipv6 reset” if your network uses IPV6. Restart the machine to see if the changes fixed the network connectivity issues.
  
 
-8.	Reset Winsock
+8.	### Reset Winsock
 If resetting the TCP/IP configurations does not fix the issue, then you can try to also reset the winsock catalog.
 
 First open PowerShell with Admin privileges. Enter the command “netsh winsock reset” and press enter to execute it. You can now restart the machine to complete the process.
  
 
-9.	Reset Network
+9.	### Reset Network
 A quick way to reset a machines network settings is to use the Network Reset feature. This will reset all network related settings back to their defaults. This will also uninstall and reinstall the network adapters on the machine. You will have to restart your machine and reconfigure the network settings on the machine after preforming the Network Reset.
 
 Go to settings -> Network & Internet. Scroll down and click Network Reset.
@@ -477,7 +477,7 @@ Go to settings -> Network & Internet. Scroll down and click Network Reset.
 Click the Reset now button to start the process. Restart the machine to complete the process.
  
 
-10.	Check Network Driver Power Settings
+10.	### Check Network Driver Power Settings
 If the machine is turning off the network adapters to save power, then that can cause network connectivity issues. It can cause intermittent network connectivity issues or even complete loss of connectivity if it is unable to reconnect to the network when the adapters are eventually turned back on.
 
 You can change the power management settings for the network adapters by going to Device Manager. Then search for the Network Adapters category.
@@ -491,7 +491,7 @@ Go to the Power Management tab and uncheck Allow the computer to turn off this d
 
 You may have to restart the machine or attempt to reconnect to the network to allow the changes to take effect.
 
-11.	Disable Then Re-Enable Network Adapters
+11.	### Disable Then Re-Enable Network Adapters
 You can also troubleshoot the network adapters by turning them off and then on again to see if that resolves the connectivity issues.
 
 You can open Device Manager and navigate to the Network Adapters category. Right click on the adapter and select Disable Device.
@@ -503,14 +503,14 @@ Wait one to two minutes and then right click the adapter and select Enable Devic
 You can also perform the same action by going to Settings -> Network & Internet. Then select Change Adapter Options. You can now right-click on the adapter and select Disable. Wait for one to two minutes, then right-click on the adapter again and select Enable.
  
 
-12.	Update Network Adapter Drivers
+12.	### Update Network Adapter Drivers
 Outdated drivers can also be the cause of network connectivity issues. You can update the network drivers by opening Device Manager and opening the Network Adapters category. Right click on the adapter you want to update and select Update Driver.
  
 
 For the lab, we will go with the option of “Search automatically for updated driver software”. This will automatically search for the drivers for your system. If it can’t find the drivers automatically, then you will have to search online to find the latest network drivers for your machine. Then you can select “Browse my computer for driver software”. You can then navigate to where you saved the driver update.
  
 
-a.	Uninstall Then Reinstall Network Drivers
+a.	### Uninstall Then Reinstall Network Drivers
 If your system is already running the latest network adapter drivers, then you can try to uninstall the drivers and reinstall them. You will have to first find the manufactures website and find the download for the driver. 
 
 To uninstall the driver, go to Device Manager. Navigate to the Network Adapters category. Then right click on the adapter and select Uninstall Device.
@@ -521,7 +521,7 @@ If you go to Action and select Scan for Hardware Changes. The system will automa
 
 You can install the driver file you downloaded from the manufactures website by right clicking on that adapter and select Update Driver. Then you can select “Browse my computer for driver software”. You can then navigate to where you saved the driver file. Follow the steps and complete the installation.
  
-b.	Change Network Adapter Drivers to Generic
+b.	### Change Network Adapter Drivers to Generic
 If you suspect the connectivity issues are caused by the drivers but you can’t find updated drivers to download; you can try to use other drivers which have been installed on the machine already.
 
 In Device Manager, right click on the network adapter driver and select Update Driver. Select “Browse my computer for driver software”. Then select “Let me pick from a list of available drivers”. This will show the available drivers which are compatible.
@@ -531,21 +531,21 @@ If you don’t want to use any of those drivers, then you can also uncheck the �
  
 
 
-ISP Network
+### ISP Network
 Once a packet is past your default gateway, it is out of your network. The packet will now travel through your ISP’s network. If you use the tracert command and see that the packets stop progressing at one of the ISP’s routers, then that’s a sign that there might be an issue with your ISP. The only way to fix connection problems that arise from your ISP is to call them and have them fix the issue on their end.
  
 
 
-Website Is Down
+### Website Is Down
 If the packet made it through your ISP’s network, then the problem might be with the website you are trying to reach. If you use the tracert command and see “Request timed out” for the target website’s servers, then the issue might just be with that website’s servers. You can quickly test this by navigating to another well-known website.
 
 
-Conclusion
+### Conclusion
 For this lab we used the tracert command to trace the path of a packet from a client machine, all the way to a well-known website. We then looked at each hop the packet took. For each type of machine on the network, we stepped through the process of troubleshooting those machines. This gave us a better understanding of the different types of machines on the network and the roles they played in facilitating a network connection. 
 
 
 
-Source:
+### Source:
 Firewall ports
 https://learn.microsoft.com/en-us/windows/security/threat-protection/windows-firewall/create-an-outbound-port-rulev
 https://learn.microsoft.com/en-us/windows/security/threat-protection/windows-firewall/open-the-group-policy-management-console-to-windows-firewall-with-advanced-security
