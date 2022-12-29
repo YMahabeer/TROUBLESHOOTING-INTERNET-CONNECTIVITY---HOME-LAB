@@ -1,250 +1,269 @@
 # TROUBLESHOOTING-INTERNET-CONNECTIVITY---HOME-LAB
 TROUBLESHOOTING INTERNET CONNECTIVITY - HOME LAB 
 
-### Lab Overview
+## Lab Overview
 This is a home lab for teaching you how to troubleshoot internet connectivity. You will take a follow-the-path approach where you trace the connection from a client machine all the way to the desired website. For each hop, you will identify the signs that a particular device is not functioning properly. You will also learn to identify and resolve common issues with that type of device on the network.
 
 The goal of this lab isn’t to teach you the fastest way to resolve network connectivity issues. It is to teach you about the different parts of a network and how they relate and work together to facilitate a connect to a website. This will help you develop a better understanding of how a network works and how to systematically troubleshoot all parts of a network.
 
 
-### Lab Outline
-1. Lab Setup
-	- Diagram of the network path
-3. Client Machine
-	- Restart and Update
-	- Firewalls
-	- Malware
-	- Troubleshoot NIC
-3. Domain Controller
-	- DHCP Server
-	- DHCP Client Machine Troubleshooting
-	- DNS Server
-	- DNS Client Troubleshooting
-4. Router / Default Gateway
-5. ISP Network
-6. Website Is Down
-7. Conclusion
+## Lab Outline
+1.	Lab Setup  
+  a.	Diagram of the network path
+2.	Client Machine  
+  a.	Restart and Update  
+  b.	Firewalls  
+  c.	Malware  
+  d.	Troubleshoot NIC  
+3.	Domain Controller  
+  a.	DHCP Server  
+  b.	DHCP Client Machine Troubleshooting  
+  c.	DNS Server  
+  d.	DNS Client Troubleshooting  
+4.	Router / Default Gateway
+5.	ISP Network
+6.	Website Is Down
+7.	Conclusion
 
 
-### Lab Setup
+## Lab Setup
 This lab will consist of two virtual machines running on Oracle Virtual Box. One machine will run Windows Server 2019 and will function as the domain controller. This machine will also serve as the DHCP server and DNS server. The second machine will run Windows 10 Enterprise and will function as a client machine. It will connect to the domain controller through an internal private network.
 
 A network packet will commonly take a path like the one in the diagram below. This will be the path that you will attempt to troubleshoot in this lab. 
 
-The complete path is Client Machine -> Domain Controller [DHCP Server & DNS Server] -> Router/Default Gateway -> ISP Routers -> Website Server.
- 
+The complete path is Client Machine -> Domain Controller [DHCP Server & DNS Server] -> Router/Default Gateway -> ISP Routers -> Website Server.  
+![image](https://user-images.githubusercontent.com/121589466/209907363-00a3a502-35f8-4b7a-b177-8db1406fb874.png)
 
 
-### Client Machine
+
+## Client Machine
 Let’s start the troubleshooting process with the client machine which has internet connectivity issues. It’s important to always question the obvious. Sometimes the problem can be caused by something as simple as a disconnected ethernet cable. Here are some other things to check on the client machine before you start troubleshooting the network.
 
-1.	### Restart and Update
-a.	Software can just break on its own sometimes. Start by trying to restart the program you are using. Internet browsers often have many tabs open and use a lot of resources. Closing and restarting the browser is a quick option to try. Also closing all programs and restarting the machine will fix issues more often than you think.
+1.	### Restart and Update  
+    a.	Software can just break on its own sometimes. Start by trying to restart the program you are using. Internet browsers often have many tabs open and use a lot of resources. Closing and restarting the browser is a quick option to try. Also closing all programs and restarting the machine will fix issues more often than you think.
 
-b.	Updating the applications and the operating system on your machine can also be an easy fix. There might be bug fixes and critical issues that are patched with the latest updates. Updates will also fix any files that may have been damaged or missing. Updating the operating system is also one of those methods that will often fix more problems than you think.
- 
+    b.	Updating the applications and the operating system on your machine can also be an easy fix. There might be bug fixes and critical issues that are patched with the latest updates. Updates will also fix any files that may have been damaged or missing. Updating the operating system is also one of those methods that will often fix more problems than you think.
+ 	
+    ![image](https://user-images.githubusercontent.com/121589466/209907384-697de7e9-35ed-4301-92c9-dc93a034ac5f.png)
+
 
 2.	### Firewalls
-The firewall is also commonly responsible for many issues with connectivity. It can perceive an outgoing or incoming connection to an application as malicious and block it. You will have to allow the app through the firewall or add a new outgoing or incoming rule to the firewall to resolve this issue.
+    The firewall is also commonly responsible for many issues with connectivity. It can perceive an outgoing or incoming connection to an application as malicious and block it. You will have to allow the app through the firewall or add a new outgoing or incoming rule to the firewall to resolve this issue.
 
-a.	### Allow Applications Through Firewall	
-Allow the application through the firewall by going to Settings -> Windows Security -> Firewall & Network Protection.
- 
+      a.  ### Allow Applications Through Firewall	
+      Allow the application through the firewall by going to Settings -> Windows Security -> Firewall & Network Protection.  
+      ![image](https://user-images.githubusercontent.com/121589466/209909546-43b7e284-012d-412e-9026-4e1b6e7bf7e3.png)
 
-Then you click on Allow an app through firewall.
- 
 
-Scroll down and find the application with connectivity issues. You can click the Change settings button then check the private and public boxes as needed to allow the application through the firewall.
- 
+      Then you click on Allow an app through firewall.  
+      ![image](https://user-images.githubusercontent.com/121589466/209909582-fa36c7d9-1b6a-4322-a9a3-f83d9075ba57.png)
 
-b.	### Add New Firewall Rules
-You can also edit or add new outgoing or inbound firewall rules. This will allow you to edit what ports and protocols are allowed or blocked. You do this by going to the domain controller and opening Server Manager. Go to Tools -> Group Policy Management.
- 
 
-You will now navigate to the OU in your organization that you want to apply this new firewall rule to. Right click on the OU and select Create a GPO in this domain and Link it here. If there is an existing firewall GPO, then you can right click on it and select Edit.
- 
+      Scroll down and find the application with connectivity issues. You can click the Change settings button then check the private and public boxes as needed to allow the application through the firewall.  
+      ![image](https://user-images.githubusercontent.com/121589466/209909639-4cda1c76-d5cd-4355-a2db-cfcb217360df.png)
 
-Give the new GPO a name then click ok.
- 
 
-Right click on the new GPO and select Edit.
- 
+      b.	### Add New Firewall Rules
+      You can also edit or add new outgoing or inbound firewall rules. This will allow you to edit what ports and protocols are allowed or blocked. You do this by going to the domain controller and opening Server Manager. Go to Tools -> Group Policy Management.  
+      ![image](https://user-images.githubusercontent.com/121589466/209909710-4808bbf3-dc42-4bc5-a06b-5bc14eefc28c.png)
 
-Navigate to Computer Configuration -> Policies -> Windows Settings -> Security Settings -> Windows Firewall with Advanced Security -> Windows Defender Firewall with Advanced Security – LDAP. 
- 
 
-Expand the submenu for Windows Defender Firewall with Advanced Security. You can now select between creating an outbound or inbound rule. For this lab you can right click on outbound rules and select new rules.
- 
+      You will now navigate to the OU in your organization that you want to apply this new firewall rule to. Right click on the OU and select Create a GPO in this domain and Link it here. If there is an existing firewall GPO, then you can right click on it and select Edit.  
+      ![image](https://user-images.githubusercontent.com/121589466/209909808-dfb04c80-e067-4e12-8f0a-824d1986225c.png)
 
-Select the Custom option and click next.
- 
 
-For this lab we will attempt to allow all programs to make outgoing connections. To do this, select All programs, then Next.
- 
+      Give the new GPO a name then click ok.  
+      ![image](https://user-images.githubusercontent.com/121589466/209909819-824d7ab6-0431-4eed-b713-d9a20bdd304d.png)
 
-Set protocol type to any. Then click Next until you see the page in the next step below.
- 
 
-Select Allow the connection. Then click Next until you see the page in the next step below.
- 
+      Right click on the new GPO and select Edit.  
+      ![image](https://user-images.githubusercontent.com/121589466/209909830-bc38d0d6-ba72-4b72-a06c-e52e01238c1c.png)
 
-Give the rule a name. Then click to the end to complete the process.
- 
 
-You can now see the new rule in the outbound rules page in Group Policy Management Editor. You can edit or disable the new rule from here.
- 
+      Navigate to Computer Configuration -> Policies -> Windows Settings -> Security Settings -> Windows Firewall with Advanced Security -> Windows Defender Firewall with Advanced Security – LDAP. 
+      ![image](https://user-images.githubusercontent.com/121589466/209909842-b8c85107-99b9-4c7b-9a03-f557b561a166.png)
 
-c.	### Reset Firewall Rules
-If you believe that a firewall rule may be the cause of network connectivity issues, then you can try to temporally turn off the firewall to see if the connection is then restored. 
 
-If you can’t identity which firewall rule is causing the issue, you can reset the firewall rules back to their default settings. You can do this by using the command “netsh advfirewall reset”.
- 
+      Expand the submenu for Windows Defender Firewall with Advanced Security. You can now select between creating an outbound or inbound rule. For this lab you can right click on outbound rules and select new rules.  
+      ![image](https://user-images.githubusercontent.com/121589466/209909876-f2a46352-e65a-4de3-8367-cd270b88aaf7.png)
 
-3.	### Malware
-Malware on a client machine can cause it to have connectivity issues. This can be the malware trying to prevent the user from attempting to remove it. The malware will try to stop the user from updating their machine or downloading a program to get rid of the malware. The malware can also consume all available resources or connection bandwidth in its attempt to send data from the machine to a remote server. This infection might spread to other machines so you will have to isolate this machine and immediately elevate this issue to resolve it as soon as possible.
 
-4.	### Troubleshoot NIC
-If you have tried everything and can’t solve the connection issues, then the issue might be with the NIC on the client machine. It could be a software or even hardware related issue.
+      Select the Custom option and click next.  
+      ![image](https://user-images.githubusercontent.com/121589466/209909880-6e59adff-7b19-4a69-909f-316c7a88da8e.png)
 
-a.	### Signs of Faulty NIC
-A sign that the NIC is going bad is if the connection is intermittent. This can show up with websites being intermittently slow to load. Downloads failing halfway. You can also test by going to an internet speed test website and seeing if the connection speed is consistent verses jumping up or down.
 
-b.	### Network Adapter Options
-You can also go to settings -> Network & Internet -> Change adapter options. Here you can look to see if there are any obvious issues. You can see if the NIC adapter is missing entirely or is displaying an error that might give you a hint of what the issue is.
- 
+      For this lab we will attempt to allow all programs to make outgoing connections. To do this, select All programs, then Next.  
+      ![image](https://user-images.githubusercontent.com/121589466/209909890-47b05e63-50b5-4873-8908-13ecd59fc785.png)
 
-c.	### Device Manager
-You can also check if the Network adapter is identified by the client machine by using device manager. Open Device Manger and scroll down to Network adapters. Expand the menu to see all adapters. If there are any issues, then the adapter might be missing completely or will show an error.
- 
 
-You can get more information by right clicking on an adapter and selecting Properties.
- 
+      Set protocol type to any. Then click Next until you see the page in the next step below.  
+      ![image](https://user-images.githubusercontent.com/121589466/209909903-3c50af7e-b9c5-46c8-af82-b9b3be992769.png)
 
-Here you can check the status of the adapter. If it is not working properly then you will see a display of the error.
- 
 
-d.	### Ping Test
-The more direct way to test if a NIC is faulty is to use a ping test. You do this by having the client machine ping itself. It will send packets to the NIC card and display the results.
+      Select Allow the connection. Then click Next until you see the page in the next step below.  
+      ![image](https://user-images.githubusercontent.com/121589466/209909915-36b07fbf-7b8d-4df2-804b-92709f338e01.png)
 
-To start the process, open the command prompt program or PowerShell and type “ping 127.0.0.1”. Then press enter to run the command. If the results show something similar to “Packets: Sent=4, Receive=0, Lost=4”, then the NIC is faulty. If the NIC is good, there should be no lost packets. You can run this test a few times to get a view of how often packets are being lost.
- 
 
-e.	### Resolve Hardware Related Problems
-Start with the most obvious culprit. Is the ethernet cable properly plugged into the port. Is it showing signs of damage. You might have to try a new cable if you suspect it’s a problem with the cable. Try to shake the cable when its plugged in. Is it in firmly or is it loose? When shaking the cable, does the LED on the port turn on as you move the cable. If it does, then it could be a bad port.
+      Give the rule a name. Then click to the end to complete the process.  
+      ![image](https://user-images.githubusercontent.com/121589466/209909921-2149ebb9-3d2a-45bb-85bf-469edfceccdf.png)
 
-If the issue is not the cable, then you will have to replace the NIC card or motherboard if it is integrated. Before you do that however, you can insert a known good NIC card into the machine to see if that works. If the issue is resolved, then it is faulty hardware causing the problems.
 
-i.	### Hard Drive Swap
-A great way to determine if the connectivity issues are hardware verses software related is to boot into a different operating system on the same machine. You can do this by swapping the hard drive in the machine with a known good one. If the system booths and there are no issues, then it’s a software issue. If it is still not fixed, then you know it’s a hardware problem.
+      You can now see the new rule in the outbound rules page in Group Policy Management Editor. You can edit or disable the new rule from here.  
+      ![image](https://user-images.githubusercontent.com/121589466/209909929-2b87447c-ade4-48a8-be9d-15ac9553dd57.png)
 
-Most of the time the machine will find the new drive but if you are having issues then you can press the ESC/F10/F12 keys during boot. This will open the boot menu and allow you to manually select which drive to booth from.
 
-f.	### Resolve Software Related Problems
-If the issues are not hardware related, then they might be software related. Here are a few ways to resolve the software related issues.
+      c.	### Reset Firewall Rules
+      If you believe that a firewall rule may be the cause of network connectivity issues, then you can try to temporally turn off the firewall to see if the connection is then restored. 
 
-i.	### Boot Machine from Known Good State
-If you have determined that that the issue could be software based, then you can booth the machine using a known good backup or perform a system restore. This is the fastest path to resolving the issue and will work most of the time if it’s a software problem.
+      If you can’t identity which firewall rule is causing the issue, you can reset the firewall rules back to their default settings. You can do this by using the command “netsh advfirewall reset”.  
+      ![image](https://user-images.githubusercontent.com/121589466/209909943-8d51f3ed-a288-4e96-926b-1fde8aa6bcfd.png)
 
-1.	### Restore from System Restore Point
-You should first try to perform a system restore if you have not created any backups of your system, or you recently installed new programs or updates onto your system.
 
-If system protection is not turned on, then you will not have any restore points and will not be able to use this method to restore the machine.
- 
+    3.	### Malware
+    Malware on a client machine can cause it to have connectivity issues. This can be the malware trying to prevent the user from attempting to remove it. The malware will try to stop the user from updating their machine or downloading a program to get rid of the malware. The malware can also consume all available resources or connection bandwidth in its attempt to send data from the machine to a remote server. This infection might spread to other machines so you will have to isolate this machine and immediately elevate this issue to resolve it as soon as possible.
 
-To perform a system restore, open Control Panel. Then in the control panel search box, search “recovery”. Select Recovery in the results. 
- 
+    4.	### Troubleshoot NIC
+    If you have tried everything and can’t solve the connection issues, then the issue might be with the NIC on the client machine. It could be a software or even hardware related issue.
 
-Click open system restore.
- 
+    a.	### Signs of Faulty NIC
+    A sign that the NIC is going bad is if the connection is intermittent. This can show up with websites being intermittently slow to load. Downloads failing halfway. You can also test by going to an internet speed test website and seeing if the connection speed is consistent verses jumping up or down.
 
-Click Next to go to the next page. You will see a list of system restore points. Select the one that you want to use to restore your system to. Then select Scan for affected programs. You will see a list of items which will be deleted if you proceed with the system restore. If you are ok with those items being deleted, then select close -> Next -> Finish.
+    b.	### Network Adapter Options
+    You can also go to settings -> Network & Internet -> Change adapter options. Here you can look to see if there are any obvious issues. You can see if the NIC adapter is missing entirely or is displaying an error that might give you a hint of what the issue is.
 
-2.	### Resetting PC
-This is another method to use if system restore didn’t work. This option allows you to reinstall windows while keeping your files. You can do this from the settings or logon screen. 
 
-Unlike system restore, this method will delete all programs and change all settings back to default.
+    c.	### Device Manager
+    You can also check if the Network adapter is identified by the client machine by using device manager. Open Device Manger and scroll down to Network adapters. Expand the menu to see all adapters. If there are any issues, then the adapter might be missing completely or will show an error.
 
-Reset your machine by going to Settings -> Update & Security -> Recovery.
- 
 
-Under Reset this PC. Select Get Started.
- 
+    You can get more information by right clicking on an adapter and selecting Properties.
 
-Select Keep my files.
- 
 
-This process will keep your files but delete all programs and change settings back to default. Click the Reset button to begin the process.
- 
+    Here you can check the status of the adapter. If it is not working properly then you will see a display of the error.
 
-3.	### Reinstall OS Using Installation Media
-If system restore and resetting your machine didn’t work, then reinstalling the OS using Installation Media is the next option to try. 
 
-First you need to create a Windows 10 installation media. You will need to perform this process on another machine with a working internet connection. You can then transfer the installation media to the machine with connectivity issues. 
+    d.	### Ping Test
+    The more direct way to test if a NIC is faulty is to use a ping test. You do this by having the client machine ping itself. It will send packets to the NIC card and display the results.
 
-Go to the link below and click Download Now under Create Windows Installation Media.
-https://www.microsoft.com/en-us/software-download/windows10
- 
+    To start the process, open the command prompt program or PowerShell and type “ping 127.0.0.1”. Then press enter to run the command. If the results show something similar to “Packets: Sent=4, Receive=0, Lost=4”, then the NIC is faulty. If the NIC is good, there should be no lost packets. You can run this test a few times to get a view of how often packets are being lost.
 
-Once downloaded, double-click and open the installation media creation tool. Select Create installation media for another PC. Go through the standard windows installation process of choosing your preferred language, edition, etc. Save it to a USB drive and connect that to the machine with connectivity issues.
 
-On the machine with connectivity issues, open file explorer and find the drive with the installation media on it. Double click the installation media to launch it and begin the process.
+    e.	### Resolve Hardware Related Problems
+    Start with the most obvious culprit. Is the ethernet cable properly plugged into the port. Is it showing signs of damage. You might have to try a new cable if you suspect it’s a problem with the cable. Try to shake the cable when its plugged in. Is it in firmly or is it loose? When shaking the cable, does the LED on the port turn on as you move the cable. If it does, then it could be a bad port.
 
-Select Change what to keep. Then select Keep personal files and Apps. Then select Next. Click Install to begin the installation process.
+    If the issue is not the cable, then you will have to replace the NIC card or motherboard if it is integrated. Before you do that however, you can insert a known good NIC card into the machine to see if that works. If the issue is resolved, then it is faulty hardware causing the problems.
 
-4.	### Booth From Known Good Backup
-If you regularly save backups of your machines using the backup and restore feature, then you can simply restore your system from a backup or system image that you know is good.
+    i.	### Hard Drive Swap
+    A great way to determine if the connectivity issues are hardware verses software related is to boot into a different operating system on the same machine. You can do this by swapping the hard drive in the machine with a known good one. If the system booths and there are no issues, then it’s a software issue. If it is still not fixed, then you know it’s a hardware problem.
 
-To restore from a backup, hold shift while you press the restart button in the start menu. You can now click troubleshoot -> Advanced Options -> See more recovery options -> system image recovery.
+    Most of the time the machine will find the new drive but if you are having issues then you can press the ESC/F10/F12 keys during boot. This will open the boot menu and allow you to manually select which drive to booth from.
 
-You can now follow the on-screen instructions and select the system image that you want to use for recovery.
+    f.	### Resolve Software Related Problems
+    If the issues are not hardware related, then they might be software related. Here are a few ways to resolve the software related issues.
 
-ii.	### Troubleshooting Network Adapter Drivers
-You can use Device Manager to fix software issues related to network adapter drivers. 
+    i.	### Boot Machine from Known Good State
+    If you have determined that that the issue could be software based, then you can booth the machine using a known good backup or perform a system restore. This is the fastest path to resolving the issue and will work most of the time if it’s a software problem.
 
-You will need to open device manager with Admin right so that you have the correct permissions to uninstall and reinstall the correct drivers.
+    1.	### Restore from System Restore Point
+    You should first try to perform a system restore if you have not created any backups of your system, or you recently installed new programs or updates onto your system.
 
-To do this, open PowerShell with admin rights.
- 
+    If system protection is not turned on, then you will not have any restore points and will not be able to use this method to restore the machine.
 
-Then type in devmgmt.msc and press enter to launch device manager with admin rights. This will give you the permissions needed to uninstall and install drivers.
- 
 
-With Device Manger open, scroll down to Network adapters. Expand the menu to see all adapters. If there are any issues, then the adapter might be missing completely or will show an error.
- 
+    To perform a system restore, open Control Panel. Then in the control panel search box, search “recovery”. Select Recovery in the results. 
 
-If there is an issue, then there will be a small hazard triangle over the adapter icon. 
- 
 
-You can get more information about an adapter by right clicking on the adapter and selecting Properties.
- 
+    Click open system restore.
 
-Here you can check the status of the adapter. If the device is working properly then it will show it is working properly, like below.
- 
 
-If it’s not working properly then you will see a display of the error.
- 
+    Click Next to go to the next page. You will see a list of system restore points. Select the one that you want to use to restore your system to. Then select Scan for affected programs. You will see a list of items which will be deleted if you proceed with the system restore. If you are ok with those items being deleted, then select close -> Next -> Finish.
 
+    2.	### Resetting PC
+    This is another method to use if system restore didn’t work. This option allows you to reinstall windows while keeping your files. You can do this from the settings or logon screen. 
 
-1.	### Toggle Off and On Network Drivers
-Just like how turning a machine off and then on can solve many problems, the same can happen with devices in device manager.
+    Unlike system restore, this method will delete all programs and change all settings back to default.
 
-To do this, right click on the Network adapter and select Disable device. Then right click on it again and select Enable device.
- 
+    Reset your machine by going to Settings -> Update & Security -> Recovery.
 
-2.	### Reinstall Network Adapter Drivers
-You can fix network adapter driver issues by reinstalling or updating them. You will have to first find the driver on the manufactures website and download it. You can try searching the name of the driver in google and you will find the download for it.
 
-Once you have downloaded the driver, right click on the adapter and select Update driver.
- 
+    Under Reset this PC. Select Get Started.
 
-Then select Browse my computer for drivers. You can now navigate to where you saved the driver you downloaded earlier.
- 
 
-iii.	### Reset Winsock
-This is an API which operates between applications and the underlying communication protocols.  Resetting its catalog back to the default settings might help solve network adapter problems.
+    Select Keep my files.
 
-First open PowerShell with Admin privileges. Enter the command “netsh winsock reset” and press enter to execute it. You can now restart the machine to complete the process.
- 
+
+    This process will keep your files but delete all programs and change settings back to default. Click the Reset button to begin the process.
+
+
+    3.	### Reinstall OS Using Installation Media
+    If system restore and resetting your machine didn’t work, then reinstalling the OS using Installation Media is the next option to try. 
+
+    First you need to create a Windows 10 installation media. You will need to perform this process on another machine with a working internet connection. You can then transfer the installation media to the machine with connectivity issues. 
+
+    Go to the link below and click Download Now under Create Windows Installation Media.
+    https://www.microsoft.com/en-us/software-download/windows10
+
+
+    Once downloaded, double-click and open the installation media creation tool. Select Create installation media for another PC. Go through the standard windows installation process of choosing your preferred language, edition, etc. Save it to a USB drive and connect that to the machine with connectivity issues.
+
+    On the machine with connectivity issues, open file explorer and find the drive with the installation media on it. Double click the installation media to launch it and begin the process.
+
+    Select Change what to keep. Then select Keep personal files and Apps. Then select Next. Click Install to begin the installation process.
+
+    4.	### Booth From Known Good Backup
+    If you regularly save backups of your machines using the backup and restore feature, then you can simply restore your system from a backup or system image that you know is good.
+
+    To restore from a backup, hold shift while you press the restart button in the start menu. You can now click troubleshoot -> Advanced Options -> See more recovery options -> system image recovery.
+
+    You can now follow the on-screen instructions and select the system image that you want to use for recovery.
+
+    ii.	### Troubleshooting Network Adapter Drivers
+    You can use Device Manager to fix software issues related to network adapter drivers. 
+
+    You will need to open device manager with Admin right so that you have the correct permissions to uninstall and reinstall the correct drivers.
+
+    To do this, open PowerShell with admin rights.
+
+
+    Then type in devmgmt.msc and press enter to launch device manager with admin rights. This will give you the permissions needed to uninstall and install drivers.
+
+
+    With Device Manger open, scroll down to Network adapters. Expand the menu to see all adapters. If there are any issues, then the adapter might be missing completely or will show an error.
+
+
+    If there is an issue, then there will be a small hazard triangle over the adapter icon. 
+
+
+    You can get more information about an adapter by right clicking on the adapter and selecting Properties.
+
+
+    Here you can check the status of the adapter. If the device is working properly then it will show it is working properly, like below.
+
+
+    If it’s not working properly then you will see a display of the error.
+
+
+
+    1.	### Toggle Off and On Network Drivers
+    Just like how turning a machine off and then on can solve many problems, the same can happen with devices in device manager.
+
+    To do this, right click on the Network adapter and select Disable device. Then right click on it again and select Enable device.
+
+
+    2.	### Reinstall Network Adapter Drivers
+    You can fix network adapter driver issues by reinstalling or updating them. You will have to first find the driver on the manufactures website and download it. You can try searching the name of the driver in google and you will find the download for it.
+
+    Once you have downloaded the driver, right click on the adapter and select Update driver.
+
+
+    Then select Browse my computer for drivers. You can now navigate to where you saved the driver you downloaded earlier.
+
+
+    iii.	### Reset Winsock
+    This is an API which operates between applications and the underlying communication protocols.  Resetting its catalog back to the default settings might help solve network adapter problems.
+
+    First open PowerShell with Admin privileges. Enter the command “netsh winsock reset” and press enter to execute it. You can now restart the machine to complete the process.
+
 
 
 Domain Controller
