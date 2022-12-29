@@ -118,8 +118,10 @@ Let’s start the troubleshooting process with the client machine which has inte
       ![image](https://user-images.githubusercontent.com/121589466/209909943-8d51f3ed-a288-4e96-926b-1fde8aa6bcfd.png)
 
 
+
 3.	### Malware   
     Malware on a client machine can cause it to have connectivity issues. This can be the malware trying to prevent the user from attempting to remove it. The malware will try to stop the user from updating their machine or downloading a program to get rid of the malware. The malware can also consume all available resources or connection bandwidth in its attempt to send data from the machine to a remote server. This infection might spread to other machines so you will have to isolate this machine and immediately elevate this issue to resolve it as soon as possible.
+
 
 4.	### Troubleshoot NIC    
     If you have tried everything and can’t solve the connection issues, then the issue might be with the NIC on the client machine. It could be a software or even hardware related issue.
@@ -152,23 +154,22 @@ Let’s start the troubleshooting process with the client machine which has inte
     ![image](https://user-images.githubusercontent.com/121589466/209910967-5f9b3e2b-24ad-4e30-b3ab-3d5de95ae89e.png)
 
 
+
     e. **Resolve Hardware Related Problems**   
-      Start with the most obvious culprit. Is the ethernet cable properly plugged into the port. Is it showing signs of damage. You might have to try a new cable if you suspect it’s a problem with the cable. Try to shake the cable when its plugged in. Is it in firmly or is it loose? When shaking the cable, does the LED on the port turn on as you move the cable. If it does, then it could be a bad port.
+    Start with the most obvious culprit. Is the ethernet cable properly plugged into the port. Is it showing signs of damage. You might have to try a new cable if you suspect it’s a problem with the cable. Try to shake the cable when its plugged in. Is it in firmly or is it loose? When shaking the cable, does the LED on the port turn on as you move the cable. If it does, then it could be a bad port.
 
-    If the issue is not the cable, then you will have to replace the NIC card or motherboard if it is integrated. Before you do that however, you can insert a known good NIC card into the machine to see if that works. If the issue is resolved, then it is faulty hardware causing the problems.   
+    If the issue is not the cable, then you will have to replace the NIC card or motherboard if it is integrated. Before you do that however, you can insert a known good NIC card into the machine to see if that works. If the issue is resolved, then it is faulty hardware causing the problems.  
 
-    **Hard Drive Swap**   
-    A great way to determine if the connectivity issues are hardware verses software related is to boot into a different operating system on the same machine. You can do this by swapping the hard drive in the machine with a known good one. If the system booths and there are no issues, then it’s a software issue. If it is still not fixed, then you know it’s a hardware problem.
-
-    Most of the time the machine will find the new drive but if you are having issues then you can press the ESC/F10/F12 keys during boot. This will open the boot menu and allow you to manually select which drive to booth from.
-
+      1. **Hard Drive Swap**  
+      A great way to determine if the connectivity issues are hardware verses software related is to boot into a different operating system on the same machine. You can do this by swapping the hard drive in the machine with a known good one. If the system booths and there are no issues, then it’s a software issue. If it is still not fixed, then you know it’s a hardware problem.<br><br/>
+      Most of the time the machine will find the new drive but if you are having issues then you can press the ESC/F10/F12 keys during boot. This will open the boot menu and allow you to manually select which drive to booth from.   
+      
     f. **Resolve Software Related Problems**   
     If the issues are not hardware related, then they might be software related. Here are a few ways to resolve the software related issues.
 
-      i. **Boot Machine from Known Good State**    
-      If you have determined that that the issue could be software based, then you can booth the machine using a known good backup or perform a system restore. This is the fastest path to resolving the issue and will work most of the time if it’s a software problem.
-
-      1. **Restore from System Restore Point**   
+    **Boot Machine from Known Good State**    
+    If you have determined that that the issue could be software based, then you can booth the machine using a known good backup or perform a system restore. This is the fastest path to resolving the issue and will work most of the time if it’s a software problem.
+      1. **Restore from System Restore Point**  
       You should first try to perform a system restore if you have not created any backups of your system, or you recently installed new programs or updates onto your system.
 
       If system protection is not turned on, then you will not have any restore points and will not be able to use this method to restore the machine.  
@@ -222,44 +223,45 @@ Let’s start the troubleshooting process with the client machine which has inte
 
       Select Change what to keep. Then select Keep personal files and Apps. Then select Next. Click Install to begin the installation process.
 
-      4.	### Booth From Known Good Backup    
+      4. **Booth From Known Good Backup**      
       If you regularly save backups of your machines using the backup and restore feature, then you can simply restore your system from a backup or system image that you know is good.
 
       To restore from a backup, hold shift while you press the restart button in the start menu. You can now click troubleshoot -> Advanced Options -> See more recovery options -> system image recovery.
 
       You can now follow the on-screen instructions and select the system image that you want to use for recovery.
+      
+      
+    **Troubleshooting Network Adapter Drivers**  
+    You can use Device Manager to fix software issues related to network adapter drivers. 
 
-      ii. **Troubleshooting Network Adapter Drivers**  
-      You can use Device Manager to fix software issues related to network adapter drivers. 
+    You will need to open device manager with Admin right so that you have the correct permissions to uninstall and reinstall the correct drivers.
 
-      You will need to open device manager with Admin right so that you have the correct permissions to uninstall and reinstall the correct drivers.
-
-      To do this, open PowerShell with admin rights.  
-      ![image](https://user-images.githubusercontent.com/121589466/209911076-e69aa757-b13a-4cc0-b1ef-d79728377ec9.png)
-
-
-      Then type in devmgmt.msc and press enter to launch device manager with admin rights. This will give you the permissions needed to uninstall and install drivers.  
-      ![image](https://user-images.githubusercontent.com/121589466/209911096-9e7eb23f-7b27-4049-a2af-ff982833f935.png)
+    To do this, open PowerShell with admin rights.  
+    ![image](https://user-images.githubusercontent.com/121589466/209911076-e69aa757-b13a-4cc0-b1ef-d79728377ec9.png)
 
 
-      With Device Manger open, scroll down to Network adapters. Expand the menu to see all adapters. If there are any issues, then the adapter might be missing completely or will show an error.  
-      ![image](https://user-images.githubusercontent.com/121589466/209911106-a479ba98-7c2f-40dc-8e4e-1f7b1aa83ffa.png)
+    Then type in devmgmt.msc and press enter to launch device manager with admin rights. This will give you the permissions needed to uninstall and install drivers.  
+    ![image](https://user-images.githubusercontent.com/121589466/209911096-9e7eb23f-7b27-4049-a2af-ff982833f935.png)
 
 
-      If there is an issue, then there will be a small hazard triangle over the adapter icon.   
-      ![image](https://user-images.githubusercontent.com/121589466/209911118-e20e142c-40c2-4d4f-88e2-d89f9b31942c.png)
+    With Device Manger open, scroll down to Network adapters. Expand the menu to see all adapters. If there are any issues, then the adapter might be missing completely or will show an error.  
+    ![image](https://user-images.githubusercontent.com/121589466/209911106-a479ba98-7c2f-40dc-8e4e-1f7b1aa83ffa.png)
 
 
-      You can get more information about an adapter by right clicking on the adapter and selecting Properties.  
-      ![image](https://user-images.githubusercontent.com/121589466/209911124-8f9df9fd-643e-497a-8649-5b3fb8bb1906.png)
+    If there is an issue, then there will be a small hazard triangle over the adapter icon.   
+    ![image](https://user-images.githubusercontent.com/121589466/209911118-e20e142c-40c2-4d4f-88e2-d89f9b31942c.png)
 
 
-      Here you can check the status of the adapter. If the device is working properly then it will show it is working properly, like below.  
-      ![image](https://user-images.githubusercontent.com/121589466/209911130-3e610209-f713-4222-a044-f297271237c1.png)
+    You can get more information about an adapter by right clicking on the adapter and selecting Properties.  
+    ![image](https://user-images.githubusercontent.com/121589466/209911124-8f9df9fd-643e-497a-8649-5b3fb8bb1906.png)
 
 
-      If it’s not working properly then you will see a display of the error.  
-      ![image](https://user-images.githubusercontent.com/121589466/209911140-2b48d31d-09e4-4c3b-8e2b-b8bc4c1bb70d.png)
+    Here you can check the status of the adapter. If the device is working properly then it will show it is working properly, like below.  
+    ![image](https://user-images.githubusercontent.com/121589466/209911130-3e610209-f713-4222-a044-f297271237c1.png)
+
+
+    If it’s not working properly then you will see a display of the error.  
+    ![image](https://user-images.githubusercontent.com/121589466/209911140-2b48d31d-09e4-4c3b-8e2b-b8bc4c1bb70d.png)
 
 
 
@@ -279,9 +281,10 @@ Let’s start the troubleshooting process with the client machine which has inte
 
       Then select Browse my computer for drivers. You can now navigate to where you saved the driver you downloaded earlier.  
       ![image](https://user-images.githubusercontent.com/121589466/209911160-821c6fe9-94b3-4188-a5ac-7717831b292f.png)
-
-
-      iii. **Reset Winsock**   
+      
+      
+      
+      **Reset Winsock**   
       This is an API which operates between applications and the underlying communication protocols.  Resetting its catalog back to the default settings might help solve network adapter problems.
 
       First open PowerShell with Admin privileges. Enter the command “netsh winsock reset” and press enter to execute it. You can now restart the machine to complete the process.  
