@@ -287,164 +287,164 @@ If there were any connection issues, then you would see some error like the Requ
 
 Let’s start with the domain controller and how we can troubleshoot it to solve potential connection issues. The machine running the domain controller itself will usually not have many problems related to connection issues. When these types of problems occur, its usually because of the DNS or DHCP servers. These often run on the domain controller.
 
-1.	DHCP Server
-Let’s start with troubleshooting the DHCP server on the domain controller. The DHCP server is responsible for handing out IP addresses to machines on the network. Problems with the DHCP server might result in machines not being able to get a new IP address when they join the network or not being able to renew the lease on existing IP addresses.
+  1.	DHCP Server
+  Let’s start with troubleshooting the DHCP server on the domain controller. The DHCP server is responsible for handing out IP addresses to machines on the network. Problems with the DHCP server might result in machines not being able to get a new IP address when they join the network or not being able to renew the lease on existing IP addresses.
+  <br><br/>
+  To troubleshoot the DHCP server, open Server Manager on the domain controller and go to Tools -> DHCP.   
+  ![image](https://user-images.githubusercontent.com/121589466/210309259-afa2fd4d-b3a0-473a-a364-f456e812c195.png)
+  <br><br/>
+  First look to see if the DHCP server is running. If everything is operating fine, then you will see a small green circle with a checkmark in it. If you don’t see the green, then that might be an indicator that something is wrong, and you need to investigate more.   
+  ![image](https://user-images.githubusercontent.com/121589466/210309275-2a9381ec-3138-48ef-a541-6ec066a72617.png)
+  <br><br/>
 
-To troubleshoot the DHCP server, open Server Manager on the domain controller and go to Tools -> DHCP.   
-![image](https://user-images.githubusercontent.com/121589466/210309259-afa2fd4d-b3a0-473a-a364-f456e812c195.png)
+  a.  ### Restart Server
+  The fastest way to attempt to resolve issues with the DHCP server is to stop and then restart it. You do this by right clicking on the server’s name and going to All Tasks, then selecting Restart.   
+  ![image](https://user-images.githubusercontent.com/121589466/210309302-5941bd64-5769-4cc1-b3ef-1dcb36fffb0d.png)
+  <br><br/>
+  You may have to right click on the DHCP server and select refresh to see any updated changes.   
+  ![image](https://user-images.githubusercontent.com/121589466/210309324-7287fe15-cb9f-46a7-9b1f-b60f0a1b543b.png)
+  <br><br/>
+  b.  ### Authorize Server
+  You should also check if the DHCP server is Authorized. DHCP servers which are joined to an active directory domain will typically continue to validate their authorization regularly. If a DHCP server fails to validate its authorization, then it will lose its ability to serve IP addresses. 
+  <br><br/>
+  You can check if the DHCP server is authorized by right clicking on it and looking to see if there is an option to Unauthorize it. If the server was unauthorized, then there would be an option to authorize it only.   
+  ![image](https://user-images.githubusercontent.com/121589466/210309343-1fb23c2d-458f-49c6-b986-2e103545022a.png)
+  <br><br/>
+  c.  ### Verify IP Address Leases
+  If the DHCP server is working properly then there might be an issue with the IP address leases being given out by the server. First check that the IP address ranges which the server is configured to give out is correct.
+  <br><br/>
+  Navigate to IPv4 -> Scope -> Address Pool. Check all the available address pools and make sure that they are configured correctly.   
+  ![image](https://user-images.githubusercontent.com/121589466/210309369-671c18b5-97fc-44c6-a47c-68db8a5aa468.png)
+  <br><br/>
+  Next check the Address Leases. If all of the available IP addresses are given out, then there might be too many machines on the network, and you will need to increase the size of the IP address pool. You can check this by right clicking on the scope and selecting Display Statistics.   
+  ![image](https://user-images.githubusercontent.com/121589466/210309391-69945596-5ef8-4106-a5fb-bb005c85e8e1.png)
+  <br><br/>
+  You will see the number of addresses being used and how many are available. If all addresses are being used, then you may need to increase the size of the scope.   
+  ![image](https://user-images.githubusercontent.com/121589466/210309408-dde6cef1-2ef9-4c25-8511-ab678f248cec.png)
+  <br><br/>
+  You can change the size of the scope by right clicking on the scope and selecting Properties.   
+  ![image](https://user-images.githubusercontent.com/121589466/210309453-58d0b98a-a647-4dba-9d6a-a35159de72db.png)
+  <br><br/>
+  You can now increase the size of the scope to accommodate a larger number of machines on your network.   
+  ![image](https://user-images.githubusercontent.com/121589466/210309471-e88fad44-59be-42ec-972a-ebeffbbcc62d.png)
+  <br><br/>
+  You can also check the lease duration on this page. If they are too long, then it might take too long for the leases to be freed up and re-enter the pool again.   
+  ![image](https://user-images.githubusercontent.com/121589466/210309488-c790fb22-a10c-4c06-8736-ffd37fae0fd5.png)
+  <br><br/>
+  d.	### Static IP Addresses
+  You should also check if there are any devices on the network with a static IP address which have not been excluded from the DHCP scope. If a machine has a static IP address and it is not excluded from the scope, then another device might get assigned that IP address. 
+  <br><br/>
+  Create a reservation for a device by opening the scope and right clicking on Reservation. Select New Reservation.   
+  ![image](https://user-images.githubusercontent.com/121589466/210309505-5e58fad0-6727-4ff5-90b6-d8a840956d74.png)
+  <br><br/>
+  You can then enter the IP address and the MAC address of the device to create the reservation.   
+  ![image](https://user-images.githubusercontent.com/121589466/210309541-c9b649f8-89b6-4cca-a9d3-757996b52241.png)
+  <br><br/>
 
-First look to see if the DHCP server is running. If everything is operating fine, then you will see a small green circle with a checkmark in it. If you don’t see the green, then that might be an indicator that something is wrong, and you need to investigate more.   
-![image](https://user-images.githubusercontent.com/121589466/210309275-2a9381ec-3138-48ef-a541-6ec066a72617.png)
+  2.	### DHCP Client Machine Troubleshooting
+  If the DHCP server is working fine but there are still connectivity issues, then the problem is on the client side.
+  <br><br/>
+  You can get more visibility on the client machine into what might be causing the issues by going to Settings -> network & Internet. Under Advanced Network Settings, select Change Sdapter Options.   
+  ![image](https://user-images.githubusercontent.com/121589466/210309560-8f22f278-ba60-4bbb-8c82-3c75b4390392.png)
+  <br><br/>
+  This will bring up the network adapters for the client machine. Right click on the adapter and select Status.   
+  ![image](https://user-images.githubusercontent.com/121589466/210309571-c4d91943-28b8-42cb-9a69-c7dc03bbcf27.png)
+  <br><br/>
+  Select Details   
+  ![image](https://user-images.githubusercontent.com/121589466/210309588-bbadef48-e191-4eff-9656-41659687c062.png)
+  <br><br/>
+  You can now see details about the network adapter on the client machine.   
+  ![image](https://user-images.githubusercontent.com/121589466/210309604-8fbe1325-27ea-4447-aaab-d8bb7f36780a.png)
+  <br><br/>
+  You can also quickly view the same information by going into PowerShell and typing “ipconfig /all”.   
+  ![image](https://user-images.githubusercontent.com/121589466/210309618-c03350b4-7ad8-4509-9105-e67e1c8b2b6b.png)
+  <br><br/>
+  a.  ### Automatic Private IP Address
+  If you see an IPv4 address within the range of 169.254.0.1 to 169.254.255.254, then that is a sign that the machine was given an automatic private IP address. If a machine powers on and can’t contact the DHCP server, then it will automatically give itself an IP address. This will be a private IP address which the machine will not be able to use to connect to the internet. 
+  <br><br/>
+  To fix this issue, you will have to release that IP address and request a new one from the DHCP server. To do this, open PowerShell and type in “ipconfig /release” to release the current IP address. Then type “ipconfig / renew” to request a new IP address from the DHCP server.   
+  ![image](https://user-images.githubusercontent.com/121589466/210309635-ca106e1c-9333-4420-af75-65c3e61e1498.png)
+  <br><br/>
+  b.  ### Expired IP Address Lease
+  You can also see when the IP address lease was obtained and when it will expire when you check the status of the network adapter. Sometimes a machine will think the IP it has is not expired even though it is. This can happen when a user leaves for vacation and leaves their machine on sleep or hibernate mode. When the user comes back from vacation and tries to start their machine, it will think no time has passed and the lease is still valid.
+  <br><br/>
+  The fix for this issue is the same as we just used before. Open PowerShell and type in “ipconfig /release” to release the current IP address. Then type “ipconfig / renew” to request a new IP address from the DHCP server. If successful you will get a new IP address and a new lease which is accurate.   
+  ![image](https://user-images.githubusercontent.com/121589466/210309648-0c3c3b2c-fde6-4506-9267-d375f850afbb.png)
+  <br><br/>
 
+  3.	### DNS Server
+  Next let’s troubleshoot DNS server related issues on the domain controller. The DNS server is responsible for name resolution on the network. You can still directly access machines using their IP addresses but that is not human readable. IP addresses can also change so that will make it difficult to communicate with other machines on the network. You will also not be able to navigate to websites using their domain name.
+  <br><br/>
+  To start troubleshooting the DNS server, open Server manager on the domain controller and go to Tools -> DNS.   
+  ![image](https://user-images.githubusercontent.com/121589466/210309659-7cad1086-56a6-420d-8689-19844d80d705.png)
+  <br><br/>
+  a.  ### Restart DNS Server
+  The quickest way to attempt to solve DNS server related issues is to restart the DNS server. In DNS Manager, right click on the server and select All Tasks -> Restart.   
+  ![image](https://user-images.githubusercontent.com/121589466/210309699-aa685976-c55d-4bb3-803d-cae260217f7e.png)
+  <br><br/>
+  b.	### Clear DNS Server Cache
+  You can also then try to clear the DNS server cache. In DNS Manager, right click on the DNS server and select Clear Cache.   
+  ![image](https://user-images.githubusercontent.com/121589466/210309783-aeede520-ad3f-4605-a4e4-7b1bc9ab7c94.png)
+  <br><br/>
+  You can also user PowerShell to perform the same task by using the command “dnscmd /clearcache”.   
+  ![image](https://user-images.githubusercontent.com/121589466/210309733-a09117e9-1cee-4999-8346-a92fe7bd2898.png)
+  <br><br/>
 
-a.	### Restart Server
-The fastest way to attempt to resolve issues with the DHCP server is to stop and then restart it. You do this by right clicking on the server’s name and going to All Tasks, then selecting Restart.   
-![image](https://user-images.githubusercontent.com/121589466/210309302-5941bd64-5769-4cc1-b3ef-1dcb36fffb0d.png)
-
-You may have to right click on the DHCP server and select refresh to see any updated changes.   
-![image](https://user-images.githubusercontent.com/121589466/210309324-7287fe15-cb9f-46a7-9b1f-b60f0a1b543b.png)
-
-b.	### Authorize Server
-You should also check if the DHCP server is Authorized. DHCP servers which are joined to an active directory domain will typically continue to validate their authorization regularly. If a DHCP server fails to validate its authorization, then it will lose its ability to serve IP addresses. 
-
-You can check if the DHCP server is authorized by right clicking on it and looking to see if there is an option to Unauthorize it. If the server was unauthorized, then there would be an option to authorize it only.   
-![image](https://user-images.githubusercontent.com/121589466/210309343-1fb23c2d-458f-49c6-b986-2e103545022a.png)
-
-c.	### Verify IP Address Leases
-If the DHCP server is working properly then there might be an issue with the IP address leases being given out by the server. First check that the IP address ranges which the server is configured to give out is correct.
-
-Navigate to IPv4 -> Scope -> Address Pool. Check all the available address pools and make sure that they are configured correctly.   
-![image](https://user-images.githubusercontent.com/121589466/210309369-671c18b5-97fc-44c6-a47c-68db8a5aa468.png)
-
-Next check the Address Leases. If all of the available IP addresses are given out, then there might be too many machines on the network, and you will need to increase the size of the IP address pool. You can check this by right clicking on the scope and selecting Display Statistics.   
-![image](https://user-images.githubusercontent.com/121589466/210309391-69945596-5ef8-4106-a5fb-bb005c85e8e1.png)
-
-You will see the number of addresses being used and how many are available. If all addresses are being used, then you may need to increase the size of the scope.   
-![image](https://user-images.githubusercontent.com/121589466/210309408-dde6cef1-2ef9-4c25-8511-ab678f248cec.png)
-
-You can change the size of the scope by right clicking on the scope and selecting Properties.   
-![image](https://user-images.githubusercontent.com/121589466/210309453-58d0b98a-a647-4dba-9d6a-a35159de72db.png)
-
-You can now increase the size of the scope to accommodate a larger number of machines on your network.   
-![image](https://user-images.githubusercontent.com/121589466/210309471-e88fad44-59be-42ec-972a-ebeffbbcc62d.png)
-
-You can also check the lease duration on this page. If they are too long, then it might take too long for the leases to be freed up and re-enter the pool again.   
-![image](https://user-images.githubusercontent.com/121589466/210309488-c790fb22-a10c-4c06-8736-ffd37fae0fd5.png)
-
-d.	### Static IP Addresses
-You should also check if there are any devices on the network with a static IP address which have not been excluded from the DHCP scope. If a machine has a static IP address and it is not excluded from the scope, then another device might get assigned that IP address. 
-
-Create a reservation for a device by opening the scope and right clicking on Reservation. Select New Reservation.   
-![image](https://user-images.githubusercontent.com/121589466/210309505-5e58fad0-6727-4ff5-90b6-d8a840956d74.png)
-
-You can then enter the IP address and the MAC address of the device to create the reservation.   
-![image](https://user-images.githubusercontent.com/121589466/210309541-c9b649f8-89b6-4cca-a9d3-757996b52241.png)
-
-
-2.	### DHCP Client Machine Troubleshooting
-If the DHCP server is working fine but there are still connectivity issues, then the problem is on the client side.
-
-You can get more visibility on the client machine into what might be causing the issues by going to Settings -> network & Internet. Under Advanced Network Settings, select Change Sdapter Options.   
-![image](https://user-images.githubusercontent.com/121589466/210309560-8f22f278-ba60-4bbb-8c82-3c75b4390392.png)
-
-This will bring up the network adapters for the client machine. Right click on the adapter and select Status.   
-![image](https://user-images.githubusercontent.com/121589466/210309571-c4d91943-28b8-42cb-9a69-c7dc03bbcf27.png)
-
-Select Details   
-![image](https://user-images.githubusercontent.com/121589466/210309588-bbadef48-e191-4eff-9656-41659687c062.png)
-
-You can now see details about the network adapter on the client machine.   
-![image](https://user-images.githubusercontent.com/121589466/210309604-8fbe1325-27ea-4447-aaab-d8bb7f36780a.png)
-
-You can also quickly view the same information by going into PowerShell and typing “ipconfig /all”.   
-![image](https://user-images.githubusercontent.com/121589466/210309618-c03350b4-7ad8-4509-9105-e67e1c8b2b6b.png)
-
-a.	### Automatic Private IP Address
-If you see an IPv4 address within the range of 169.254.0.1 to 169.254.255.254, then that is a sign that the machine was given an automatic private IP address. If a machine powers on and can’t contact the DHCP server, then it will automatically give itself an IP address. This will be a private IP address which the machine will not be able to use to connect to the internet. 
-
-To fix this issue, you will have to release that IP address and request a new one from the DHCP server. To do this, open PowerShell and type in “ipconfig /release” to release the current IP address. Then type “ipconfig / renew” to request a new IP address from the DHCP server.   
-![image](https://user-images.githubusercontent.com/121589466/210309635-ca106e1c-9333-4420-af75-65c3e61e1498.png)
-
-b.	### Expired IP Address Lease
-You can also see when the IP address lease was obtained and when it will expire when you check the status of the network adapter. Sometimes a machine will think the IP it has is not expired even though it is. This can happen when a user leaves for vacation and leaves their machine on sleep or hibernate mode. When the user comes back from vacation and tries to start their machine, it will think no time has passed and the lease is still valid.
-
-The fix for this issue is the same as we just used before. Open PowerShell and type in “ipconfig /release” to release the current IP address. Then type “ipconfig / renew” to request a new IP address from the DHCP server. If successful you will get a new IP address and a new lease which is accurate.   
-![image](https://user-images.githubusercontent.com/121589466/210309648-0c3c3b2c-fde6-4506-9267-d375f850afbb.png)
-
-
-3.	### DNS Server
-Next let’s troubleshoot DNS server related issues on the domain controller. The DNS server is responsible for name resolution on the network. You can still directly access machines using their IP addresses but that is not human readable. IP addresses can also change so that will make it difficult to communicate with other machines on the network. You will also not be able to navigate to websites using their domain name.
-
-To start troubleshooting the DNS server, open Server manager on the domain controller and go to Tools -> DNS.   
-![image](https://user-images.githubusercontent.com/121589466/210309659-7cad1086-56a6-420d-8689-19844d80d705.png)
-
-a. ### Restart DNS Server
-The quickest way to attempt to solve DNS server related issues is to restart the DNS server. In DNS Manager, right click on the server and select All Tasks -> Restart.   
-![image](https://user-images.githubusercontent.com/121589466/210309699-aa685976-c55d-4bb3-803d-cae260217f7e.png)
-
-b.	### Clear DNS Server Cache
-You can also then try to clear the DNS server cache. In DNS Manager, right click on the DNS server and select Clear Cache.   
-![image](https://user-images.githubusercontent.com/121589466/210309783-aeede520-ad3f-4605-a4e4-7b1bc9ab7c94.png)
- 
-You can also user PowerShell to perform the same task by using the command “dnscmd /clearcache”.   
-![image](https://user-images.githubusercontent.com/121589466/210309733-a09117e9-1cee-4999-8346-a92fe7bd2898.png)
-
-
-4.	### DNS Client Troubleshooting
-If the cause of the connectivity issues is not the DNS server, then it is possibly a problem on the client side.
-
-a.	### Check DNS Server IP Configuration
-The first step to troubleshooting DNS issues on a client machine is to check the DNS configuration. You can do this by opening PowerShell and entering the command “ipconfig /all”. You are looking to see if the IP addresses of the DNS servers are correct.   
-![image](https://user-images.githubusercontent.com/121589466/210309848-7584dc1f-014c-4110-92ee-6c678a4e1efe.png)
-
-If there is no IP address for the DNS servers, then there may be an issue contacting the DNS server. You can attempt to fix this by going to the domain controller and restarting the DNS server. Do this by opening Server Manager and go to Tools -> DNS. Then right click on the DNS server and go to All Tasks and select Restart.   
-![image](https://user-images.githubusercontent.com/121589466/210309871-549a40b3-f891-455c-ad5c-433e2af63b11.png)
-
-If the IP address of the DNS server is incorrect, then you can change it in two places. The first way is to open Server Manager on the domain controller. Then go to Tools -> DHCP. Go to IPV4 -> Scope -> Scope Options. You will see an option for DNS Servers. Select it.   
-![image](https://user-images.githubusercontent.com/121589466/210309888-7d4abf05-92f3-43a0-b3c7-9a68433c2221.png)
-
-Select the option 006 DNS Servers. Now you will have the option to enter the correct IP address of the DNS server. If there are multiple DNS Servers, then you can also change the order of them so that the preferred one will be reached first.   
-![image](https://user-images.githubusercontent.com/121589466/210309912-b378d412-d553-46c3-98c2-55319b0e5a32.png)
-
-The second way to change the DNS server IP address is to go to settings -> Network & Internet -> Change Adapter Options. Right click on the network adapter and select Properties. Then select Internet Protocol Version 4, then click Properties. You can now change the DNS server IP address to the correct one.    
-![image](https://user-images.githubusercontent.com/121589466/210309927-46a24a36-8935-4dad-8cad-3077ced03162.png)
-
-b.	### Verify DNS Server IP
-Now that you have checked that the DNS servers are configured with the correct IP addresses, you can now start troubleshooting the connection. Start by trying to ping the DNS servers to double check that the client can reach them. In PowerShell, enter the command ping followed by the IP address of the DNS server.   
-![image](https://user-images.githubusercontent.com/121589466/210309940-99baba63-e027-406f-91af-d138a6a043a6.png)
-
-If you cannot reach the DNS server from the client, then you will have to double check that the DNS server is configured properly and is running. You may have to restart the client machine and check the connections and cables.
-
-Another way to verify the DNS server’s IP address is to use the command “Get-DnsClientServerAddress”. This will Display the network adapters on the machine and the IP addresses of the DNS servers associated with those adapters.   
-![image](https://user-images.githubusercontent.com/121589466/210309955-7b017a25-f245-4390-9143-5d5424c88377.png)
-
-c.	### Verify DNS Server Will Respond Correctly
-Now that you can ping the DNS server and confirmed that there is a connection between it and the Client machine, you can now test if the DNS server will respond correctly to requests. You can do this by using the nslookup command. It uses the server’s DNS cache instead of the client’s DNS cache. This will let you know if the server has the correct records. This can also be helpful to verify if the DNS server in which the client machine is pulling the DNS records from is the local DNS server verses one which is outside of the network. The local DNS server will be able to resolve the names of machines on your network. A public DNS server will not be able to.
-
-Query the DNS server by using the nslookup command followed by the name of a machine on your network. Preferably the client machine with connectivity issues.   
-![image](https://user-images.githubusercontent.com/121589466/210309967-cd60a9ad-e4d5-42e0-97ec-d2f3fd6b6ec7.png)
-
-Next, test a well-known public website like google.com. If you can resolve a well-known public website but not a machine on your local network, then you might be connecting to a public DNS server instead of one on your local network. You will have to double check that you configured your DNS server correctly.   
-![image](https://user-images.githubusercontent.com/121589466/210309981-a4daeec3-71a4-49be-97e3-455e1b27772c.png)
-
-If you still can’t resolve the name of the client machine, then there might be an issue with the records on the DNS server. You can try to fix this issue by clearing the DNS resolver cache on the Client machine. Use the command “ipconfig /flushdns” to do so.   
-![image](https://user-images.githubusercontent.com/121589466/210310000-adb0b62f-8e56-46dd-835f-c8d0693b24e2.png)
-
-After you clear the resolver cache, you can also try to make sure the DNS record for the client machine is registered with the DNS server. Do this by using the command “ipconfig / registerdns”.   
-![image](https://user-images.githubusercontent.com/121589466/210310021-b79e0eb0-2698-451b-9fd1-66d8d5a4ab21.png)
-
-You can also manually look at the DNS records yourself by going to the domain controller and opening Server Manager. Then go to Tools ->DNS. Click on the DNS server and open Forward Lookup Zones. Then find your organization domain name and click on that. This will bring up the list of all DNS records on the server.   
-![image](https://user-images.githubusercontent.com/121589466/210310035-c3550890-2725-4f09-9e40-7e1caba52a9e.png)
-
-You can then delete or edit these records. Right click on a record and select Properties to edit it.   
-![image](https://user-images.githubusercontent.com/121589466/210310096-756fde09-512e-4fed-9317-e99c47c29090.png)
-
-You can change the host name of the record and the IP address associated with that host name.   
-![image](https://user-images.githubusercontent.com/121589466/210310106-1ab1478c-7b2c-4428-8834-9d9a06655ba1.png)
-
-You can also try resetting the winsock catalog back to its default settings. First open PowerShell with Admin privileges. Enter the command “netsh winsock reset” and press enter to execute it. You can now restart the machine to complete the process.
-![image](https://user-images.githubusercontent.com/121589466/210310113-baf1a9ae-925f-4396-8d3f-7df636dfaa83.png)
-
+  4.	### DNS Client Troubleshooting
+  If the cause of the connectivity issues is not the DNS server, then it is possibly a problem on the client side.
+  <br><br/>
+  a.	### Check DNS Server IP Configuration
+  The first step to troubleshooting DNS issues on a client machine is to check the DNS configuration. You can do this by opening PowerShell and entering the command “ipconfig /all”. You are looking to see if the IP addresses of the DNS servers are correct.   
+  ![image](https://user-images.githubusercontent.com/121589466/210309848-7584dc1f-014c-4110-92ee-6c678a4e1efe.png)
+  <br><br/>
+  If there is no IP address for the DNS servers, then there may be an issue contacting the DNS server. You can attempt to fix this by going to the domain controller and restarting the DNS server. Do this by opening Server Manager and go to Tools -> DNS. Then right click on the DNS server and go to All Tasks and select Restart.   
+  ![image](https://user-images.githubusercontent.com/121589466/210309871-549a40b3-f891-455c-ad5c-433e2af63b11.png)
+  <br><br/>
+  If the IP address of the DNS server is incorrect, then you can change it in two places. The first way is to open Server Manager on the domain controller. Then go to Tools -> DHCP. Go to IPV4 -> Scope -> Scope Options. You will see an option for DNS Servers. Select it.   
+  ![image](https://user-images.githubusercontent.com/121589466/210309888-7d4abf05-92f3-43a0-b3c7-9a68433c2221.png)
+  <br><br/>
+  Select the option 006 DNS Servers. Now you will have the option to enter the correct IP address of the DNS server. If there are multiple DNS Servers, then you can also change the order of them so that the preferred one will be reached first.   
+  ![image](https://user-images.githubusercontent.com/121589466/210309912-b378d412-d553-46c3-98c2-55319b0e5a32.png)
+  <br><br/>
+  The second way to change the DNS server IP address is to go to settings -> Network & Internet -> Change Adapter Options. Right click on the network adapter and select Properties. Then select Internet Protocol Version 4, then click Properties. You can now change the DNS server IP address to the correct one.    
+  ![image](https://user-images.githubusercontent.com/121589466/210309927-46a24a36-8935-4dad-8cad-3077ced03162.png)
+  <br><br/>
+  b.	### Verify DNS Server IP
+  Now that you have checked that the DNS servers are configured with the correct IP addresses, you can now start troubleshooting the connection. Start by trying to ping the DNS servers to double check that the client can reach them. In PowerShell, enter the command ping followed by the IP address of the DNS server.   
+  ![image](https://user-images.githubusercontent.com/121589466/210309940-99baba63-e027-406f-91af-d138a6a043a6.png)
+  <br><br/>
+  If you cannot reach the DNS server from the client, then you will have to double check that the DNS server is configured properly and is running. You may have to restart the client machine and check the connections and cables.
+  <br><br/>
+  Another way to verify the DNS server’s IP address is to use the command “Get-DnsClientServerAddress”. This will Display the network adapters on the machine and the IP addresses of the DNS servers associated with those adapters.   
+  ![image](https://user-images.githubusercontent.com/121589466/210309955-7b017a25-f245-4390-9143-5d5424c88377.png)
+  <br><br/>
+  c.	### Verify DNS Server Will Respond Correctly
+  Now that you can ping the DNS server and confirmed that there is a connection between it and the Client machine, you can now test if the DNS server will respond correctly to requests. You can do this by using the nslookup command. It uses the server’s DNS cache instead of the client’s DNS cache. This will let you know if the server has the correct records. This can also be helpful to verify if the DNS server in which the client machine is pulling the DNS records from is the local DNS server verses one which is outside of the network. The local DNS server will be able to resolve the names of machines on your network. A public DNS server will not be able to.
+  <br><br/>
+  Query the DNS server by using the nslookup command followed by the name of a machine on your network. Preferably the client machine with connectivity issues.   
+  ![image](https://user-images.githubusercontent.com/121589466/210309967-cd60a9ad-e4d5-42e0-97ec-d2f3fd6b6ec7.png)
+  <br><br/>
+  Next, test a well-known public website like google.com. If you can resolve a well-known public website but not a machine on your local network, then you might be connecting to a public DNS server instead of one on your local network. You will have to double check that you configured your DNS server correctly.   
+  ![image](https://user-images.githubusercontent.com/121589466/210309981-a4daeec3-71a4-49be-97e3-455e1b27772c.png)
+  <br><br/>
+  If you still can’t resolve the name of the client machine, then there might be an issue with the records on the DNS server. You can try to fix this issue by clearing the DNS resolver cache on the Client machine. Use the command “ipconfig /flushdns” to do so.   
+  ![image](https://user-images.githubusercontent.com/121589466/210310000-adb0b62f-8e56-46dd-835f-c8d0693b24e2.png)
+  <br><br/>
+  After you clear the resolver cache, you can also try to make sure the DNS record for the client machine is registered with the DNS server. Do this by using the command “ipconfig / registerdns”.   
+  ![image](https://user-images.githubusercontent.com/121589466/210310021-b79e0eb0-2698-451b-9fd1-66d8d5a4ab21.png)
+  <br><br/>
+  You can also manually look at the DNS records yourself by going to the domain controller and opening Server Manager. Then go to Tools ->DNS. Click on the DNS server and open Forward Lookup Zones. Then find your organization domain name and click on that. This will bring up the list of all DNS records on the server.   
+  ![image](https://user-images.githubusercontent.com/121589466/210310035-c3550890-2725-4f09-9e40-7e1caba52a9e.png)
+  <br><br/>
+  You can then delete or edit these records. Right click on a record and select Properties to edit it.   
+  ![image](https://user-images.githubusercontent.com/121589466/210310096-756fde09-512e-4fed-9317-e99c47c29090.png)
+  <br><br/>
+  You can change the host name of the record and the IP address associated with that host name.   
+  ![image](https://user-images.githubusercontent.com/121589466/210310106-1ab1478c-7b2c-4428-8834-9d9a06655ba1.png)
+  <br><br/>
+  You can also try resetting the winsock catalog back to its default settings. First open PowerShell with Admin privileges. Enter the command “netsh winsock reset” and press enter to execute it. You can now restart the machine to complete the process.
+  ![image](https://user-images.githubusercontent.com/121589466/210310113-baf1a9ae-925f-4396-8d3f-7df636dfaa83.png)
+  <br><br/>
 
 ### Router / Default Gateway 
 With our client machine and domain controller confirmed to be working fine. Let’s look at the next hop in the path out of the network. It is the default gateway. On all networks, you will have to eventually go through the default gateway before you exit the network. The default gateway is often also the router. A router is typically thought as the hardware provided by an ISP which is in most residential homes. In an office setting, any machine which does routing can be considered a router. On many networks the machine which runs the domain controller will also serve as the DNS server, DHCP server, default gateway and the router.
