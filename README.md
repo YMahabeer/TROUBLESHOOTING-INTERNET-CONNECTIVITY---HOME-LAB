@@ -296,50 +296,49 @@ Let’s start with the domain controller and how we can troubleshoot it to solve
   First look to see if the DHCP server is running. If everything is operating fine, then you will see a small green circle with a checkmark in it. If you don’t see the green, then that might be an indicator that something is wrong, and you need to investigate more.   
   ![image](https://user-images.githubusercontent.com/121589466/210309275-2a9381ec-3138-48ef-a541-6ec066a72617.png)
   <br><br/>
-
-  a.  ### Restart Server
-  The fastest way to attempt to resolve issues with the DHCP server is to stop and then restart it. You do this by right clicking on the server’s name and going to All Tasks, then selecting Restart.   
-  ![image](https://user-images.githubusercontent.com/121589466/210309302-5941bd64-5769-4cc1-b3ef-1dcb36fffb0d.png)
-  <br><br/>
-  You may have to right click on the DHCP server and select refresh to see any updated changes.   
-  ![image](https://user-images.githubusercontent.com/121589466/210309324-7287fe15-cb9f-46a7-9b1f-b60f0a1b543b.png)
-  <br><br/>
-  b.  ### Authorize Server
-  You should also check if the DHCP server is Authorized. DHCP servers which are joined to an active directory domain will typically continue to validate their authorization regularly. If a DHCP server fails to validate its authorization, then it will lose its ability to serve IP addresses. 
-  <br><br/>
-  You can check if the DHCP server is authorized by right clicking on it and looking to see if there is an option to Unauthorize it. If the server was unauthorized, then there would be an option to authorize it only.   
-  ![image](https://user-images.githubusercontent.com/121589466/210309343-1fb23c2d-458f-49c6-b986-2e103545022a.png)
-  <br><br/>
-  c.  ### Verify IP Address Leases
-  If the DHCP server is working properly then there might be an issue with the IP address leases being given out by the server. First check that the IP address ranges which the server is configured to give out is correct.
-  <br><br/>
-  Navigate to IPv4 -> Scope -> Address Pool. Check all the available address pools and make sure that they are configured correctly.   
-  ![image](https://user-images.githubusercontent.com/121589466/210309369-671c18b5-97fc-44c6-a47c-68db8a5aa468.png)
-  <br><br/>
-  Next check the Address Leases. If all of the available IP addresses are given out, then there might be too many machines on the network, and you will need to increase the size of the IP address pool. You can check this by right clicking on the scope and selecting Display Statistics.   
-  ![image](https://user-images.githubusercontent.com/121589466/210309391-69945596-5ef8-4106-a5fb-bb005c85e8e1.png)
-  <br><br/>
-  You will see the number of addresses being used and how many are available. If all addresses are being used, then you may need to increase the size of the scope.   
-  ![image](https://user-images.githubusercontent.com/121589466/210309408-dde6cef1-2ef9-4c25-8511-ab678f248cec.png)
-  <br><br/>
-  You can change the size of the scope by right clicking on the scope and selecting Properties.   
-  ![image](https://user-images.githubusercontent.com/121589466/210309453-58d0b98a-a647-4dba-9d6a-a35159de72db.png)
-  <br><br/>
-  You can now increase the size of the scope to accommodate a larger number of machines on your network.   
-  ![image](https://user-images.githubusercontent.com/121589466/210309471-e88fad44-59be-42ec-972a-ebeffbbcc62d.png)
-  <br><br/>
-  You can also check the lease duration on this page. If they are too long, then it might take too long for the leases to be freed up and re-enter the pool again.   
-  ![image](https://user-images.githubusercontent.com/121589466/210309488-c790fb22-a10c-4c06-8736-ffd37fae0fd5.png)
-  <br><br/>
-  d.	### Static IP Addresses
-  You should also check if there are any devices on the network with a static IP address which have not been excluded from the DHCP scope. If a machine has a static IP address and it is not excluded from the scope, then another device might get assigned that IP address. 
-  <br><br/>
-  Create a reservation for a device by opening the scope and right clicking on Reservation. Select New Reservation.   
-  ![image](https://user-images.githubusercontent.com/121589466/210309505-5e58fad0-6727-4ff5-90b6-d8a840956d74.png)
-  <br><br/>
-  You can then enter the IP address and the MAC address of the device to create the reservation.   
-  ![image](https://user-images.githubusercontent.com/121589466/210309541-c9b649f8-89b6-4cca-a9d3-757996b52241.png)
-  <br><br/>
+      a.       ### Restart Server
+      The fastest way to attempt to resolve issues with the DHCP server is to stop and then restart it. You do this by right clicking on the server’s name and going to All Tasks, then selecting Restart.   
+      ![image](https://user-images.githubusercontent.com/121589466/210309302-5941bd64-5769-4cc1-b3ef-1dcb36fffb0d.png)
+      <br><br/>
+      You may have to right click on the DHCP server and select refresh to see any updated changes.   
+      ![image](https://user-images.githubusercontent.com/121589466/210309324-7287fe15-cb9f-46a7-9b1f-b60f0a1b543b.png)
+      <br><br/>
+      b.  ### Authorize Server
+      You should also check if the DHCP server is Authorized. DHCP servers which are joined to an active directory domain will typically continue to validate their authorization regularly. If a DHCP server fails to validate its authorization, then it will lose its ability to serve IP addresses. 
+      <br><br/>
+      You can check if the DHCP server is authorized by right clicking on it and looking to see if there is an option to Unauthorize it. If the server was unauthorized, then there would be an option to authorize it only.   
+      ![image](https://user-images.githubusercontent.com/121589466/210309343-1fb23c2d-458f-49c6-b986-2e103545022a.png)
+      <br><br/>
+      c.  ### Verify IP Address Leases
+      If the DHCP server is working properly then there might be an issue with the IP address leases being given out by the server. First check that the IP address ranges which the server is configured to give out is correct.
+      <br><br/>
+      Navigate to IPv4 -> Scope -> Address Pool. Check all the available address pools and make sure that they are configured correctly.   
+      ![image](https://user-images.githubusercontent.com/121589466/210309369-671c18b5-97fc-44c6-a47c-68db8a5aa468.png)
+      <br><br/>
+      Next check the Address Leases. If all of the available IP addresses are given out, then there might be too many machines on the network, and you will need to increase the size of the IP address pool. You can check this by right clicking on the scope and selecting Display Statistics.   
+      ![image](https://user-images.githubusercontent.com/121589466/210309391-69945596-5ef8-4106-a5fb-bb005c85e8e1.png)
+      <br><br/>
+      You will see the number of addresses being used and how many are available. If all addresses are being used, then you may need to increase the size of the scope.   
+      ![image](https://user-images.githubusercontent.com/121589466/210309408-dde6cef1-2ef9-4c25-8511-ab678f248cec.png)
+      <br><br/>
+      You can change the size of the scope by right clicking on the scope and selecting Properties.   
+      ![image](https://user-images.githubusercontent.com/121589466/210309453-58d0b98a-a647-4dba-9d6a-a35159de72db.png)
+      <br><br/>
+      You can now increase the size of the scope to accommodate a larger number of machines on your network.   
+      ![image](https://user-images.githubusercontent.com/121589466/210309471-e88fad44-59be-42ec-972a-ebeffbbcc62d.png)
+      <br><br/>
+      You can also check the lease duration on this page. If they are too long, then it might take too long for the leases to be freed up and re-enter the pool again.   
+      ![image](https://user-images.githubusercontent.com/121589466/210309488-c790fb22-a10c-4c06-8736-ffd37fae0fd5.png)
+      <br><br/>
+      d.	### Static IP Addresses
+      You should also check if there are any devices on the network with a static IP address which have not been excluded from the DHCP scope. If a machine has a static IP address and it is not excluded from the scope, then another device might get assigned that IP address. 
+      <br><br/>
+      Create a reservation for a device by opening the scope and right clicking on Reservation. Select New Reservation.   
+      ![image](https://user-images.githubusercontent.com/121589466/210309505-5e58fad0-6727-4ff5-90b6-d8a840956d74.png)
+      <br><br/>
+      You can then enter the IP address and the MAC address of the device to create the reservation.   
+      ![image](https://user-images.githubusercontent.com/121589466/210309541-c9b649f8-89b6-4cca-a9d3-757996b52241.png)
+      <br><br/>
 
   2.	### DHCP Client Machine Troubleshooting
   If the DHCP server is working fine but there are still connectivity issues, then the problem is on the client side.
