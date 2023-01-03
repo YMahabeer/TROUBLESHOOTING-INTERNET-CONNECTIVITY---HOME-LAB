@@ -451,115 +451,116 @@ With our client machine and domain controller confirmed to be working fine. Let�
 For this lab, the router will be a machine which is configured to be the default gateway and performs the routing for the network. Since it is a machine, the solutions to troubleshooting any other machine will also apply here also. Let’s go through the steps of troubleshooting this machine.
 
 1.	### Check Cables and Connections
-First check all cables and connections to the machine to make sure everything is plugged in properly. Check if the ethernet port is plugged in properly. See if the LED light on the ethernet port comes on when you move the cable around. That might be a sign of a bad cable or port.
+    First check all cables and connections to the machine to make sure everything is plugged in properly. Check if the ethernet port is plugged in properly. See if the LED light on the ethernet port comes on when you move the cable around. That might be a sign of a bad cable or port.
 
 2.	### Restart Machine 
-If the machine has been running for a long time, then closing all programs and performing a restart might help fix the issue.
+    If the machine has been running for a long time, then closing all programs and performing a restart might help fix the issue.
 
 3.	### Check For Recent Updates
-You should also check to see if there were any updates within the last day or two which were recently installed on the machine. If so, then that might be the cause of the connectivity issues.
+    You should also check to see if there were any updates within the last day or two which were recently installed on the machine. If so, then that might be the cause of the connectivity issues.
 
-Check for the latest updates by going to Settings -> Update and Security. Then click on View Update History. You will see the latest updates and the dates in which they were install on.
- 
-
-You can uninstall an update by clicking the Uninstall Updates button on the upper left. You can then click on the last update and click the Uninstall button to start the uninstallation process.
- 
+    Check for the latest updates by going to Settings -> Update and Security. Then click on View Update History. You will see the latest updates and the dates in which they were install on.  
+![image](https://user-images.githubusercontent.com/121589466/210318409-dc684e45-3e5e-40c2-aefd-0ed0baa59187.png)
+  <br><br/>
+    You can uninstall an update by clicking the Uninstall Updates button on the upper left. You can then click on the last update and click the Uninstall button to start the uninstallation process.  
+![image](https://user-images.githubusercontent.com/121589466/210318472-0a3848fa-71b3-40d3-85f2-ed3c30e6d882.png)
 
 4.	### Turn Off Antivirus and Firewall
-A trigger-happy antivirus or firewall might block the connection for a machine if it sees activity which might be suspicious. You can test if the antivirus or firewall is blocking the connection by temporarily turning them off to see if that has an effect on the connectivity issues.
+    A trigger-happy antivirus or firewall might block the connection for a machine if it sees activity which might be suspicious. You can test if the antivirus or firewall is blocking the connection by temporarily turning them off to see if that has an effect on the connectivity issues.
 
-If you believe that a firewall rule may be the cause of the network connectivity issues but can’t identity which one it is, then you can reset the firewall rules back to their default settings. You can do this by using the command “netsh advfirewall reset”.
- 
+    If you believe that a firewall rule may be the cause of the network connectivity issues but can’t identity which one it is, then you can reset the firewall rules back to their default settings. You can do this by using the command “netsh advfirewall reset”.
+![image](https://user-images.githubusercontent.com/121589466/210318494-f1fe82ea-35a4-4cab-926f-055a43c2408e.png)
 
 5.	### Check IP Configuration
-You should also check that the machine has received an IP address from the DHCP server. You can quickly view the network connectivity information by going into PowerShell and typing “ipconfig /all”. If there is no IP address, then you may have to go through the DHCP troubleshooting steps we did earlier.
- 
- 
-If there is an issue with the IP address, then you can try to release and then request a new IP address. To do this, open PowerShell and type in “ipconfig /release” to release the current IP address. Then type “ipconfig / renew” to request a new IP address from the DHCP server. 
+    You should also check that the machine has received an IP address from the DHCP server. You can quickly view the network connectivity information by going into PowerShell and typing “ipconfig /all”. If there is no IP address, then you may have to go through the DHCP troubleshooting steps we did earlier.  
+![image](https://user-images.githubusercontent.com/121589466/210318514-4a433c4a-5d1c-4840-a5ea-55d250ef9577.png)
+  <br><br/>
+    If there is an issue with the IP address, then you can try to release and then request a new IP address. To do this, open PowerShell and type in “ipconfig /release” to release the current IP address. Then type “ipconfig / renew” to request a new IP address from the DHCP server.
+![image](https://user-images.githubusercontent.com/121589466/210318564-7094c1a5-6b36-461e-b568-7dfe4635f807.png)
 
 6.	### Check DNS Settings and Configuration
-You can also check the DNS server configuration when using the “ipconfig /all” command. If the DNS server has the right IP address, then you can try to clear the DNS cache using the command “ipconfig /flushdns” to see if that resolves the connectivity issues.
- 
+    You can also check the DNS server configuration when using the “ipconfig /all” command. If the DNS server has the right IP address, then you can try to clear the DNS cache using the command “ipconfig /flushdns” to see if that resolves the connectivity issues.
+![image](https://user-images.githubusercontent.com/121589466/210318583-5e5e00e3-27bc-497f-aaab-d4429f61a9a8.png)
 
-You can also try to clear the DNS cache on the DNS server by using the command “dnscmd /clearcache”.
- 
+    You can also try to clear the DNS cache on the DNS server by using the command “dnscmd /clearcache”.
+![image](https://user-images.githubusercontent.com/121589466/210318590-cc71a130-5487-4368-87ce-161893c5a872.png)
 
 7.	### Reset TCP/IP Stack
-One way to fix issues with the default gateway is to reset the TCP/IP stack. This will reset those settings back to default. This can help resolve misconfigured IP settings. You may have to reconfigure the network settings on the machine to get it working again after this. 
+    One way to fix issues with the default gateway is to reset the TCP/IP stack. This will reset those settings back to default. This can help resolve misconfigured IP settings. You may have to reconfigure the network settings on the machine to get it working again after this. 
 
-To do this, open PowerShell with administrator privileges.
- 
-
-Enter the command “netsh interface ipv4 reset”. You can also enter the command “netsh interface ipv6 reset” if your network uses IPV6. Restart the machine to see if the changes fixed the network connectivity issues.
- 
+    To do this, open PowerShell with administrator privileges.  
+![image](https://user-images.githubusercontent.com/121589466/210318601-af745431-f5f6-497e-b9cd-97373f44fb79.png)
+  <br><br/>
+    Enter the command “netsh interface ipv4 reset”. You can also enter the command “netsh interface ipv6 reset” if your network uses IPV6. Restart the machine to see if the changes fixed the network connectivity issues.  
+![image](https://user-images.githubusercontent.com/121589466/210318616-ff36fecd-dd52-4cae-8001-ca064090561c.png)
 
 8.	### Reset Winsock
-If resetting the TCP/IP configurations does not fix the issue, then you can try to also reset the winsock catalog.
+    If resetting the TCP/IP configurations does not fix the issue, then you can try to also reset the winsock catalog.
 
-First open PowerShell with Admin privileges. Enter the command “netsh winsock reset” and press enter to execute it. You can now restart the machine to complete the process.
- 
+    First open PowerShell with Admin privileges. Enter the command “netsh winsock reset” and press enter to execute it. You can now restart the machine to complete the process.  
+![image](https://user-images.githubusercontent.com/121589466/210318630-e8185ec2-57c1-4b91-9ed6-b501f5291b6e.png)
 
 9.	### Reset Network
-A quick way to reset a machines network settings is to use the Network Reset feature. This will reset all network related settings back to their defaults. This will also uninstall and reinstall the network adapters on the machine. You will have to restart your machine and reconfigure the network settings on the machine after preforming the Network Reset.
+    A quick way to reset a machines network settings is to use the Network Reset feature. This will reset all network related settings back to their defaults. This will also uninstall and reinstall the network adapters on the machine. You will have to restart your machine and reconfigure the network settings on the machine after preforming the Network Reset.
 
-Go to settings -> Network & Internet. Scroll down and click Network Reset.
- 
-
-Click the Reset now button to start the process. Restart the machine to complete the process.
- 
+    Go to settings -> Network & Internet. Scroll down and click Network Reset.  
+![image](https://user-images.githubusercontent.com/121589466/210318665-72093931-1b16-4a91-a174-887de082f886.png)
+  <br><br/>
+    Click the Reset now button to start the process. Restart the machine to complete the process.  
+![image](https://user-images.githubusercontent.com/121589466/210318680-a6676952-e67f-425b-a87c-4c56cc95af0b.png)
 
 10.	### Check Network Driver Power Settings
-If the machine is turning off the network adapters to save power, then that can cause network connectivity issues. It can cause intermittent network connectivity issues or even complete loss of connectivity if it is unable to reconnect to the network when the adapters are eventually turned back on.
+    If the machine is turning off the network adapters to save power, then that can cause network connectivity issues. It can cause intermittent network connectivity issues or even complete loss of connectivity if it is unable to reconnect to the network when the adapters are eventually turned back on.
 
-You can change the power management settings for the network adapters by going to Device Manager. Then search for the Network Adapters category.
- 
-
-Right click on the network adapter and select Properties.
- 
-
-Go to the Power Management tab and uncheck Allow the computer to turn off this device to save power. Then click ok.
- 
-
-You may have to restart the machine or attempt to reconnect to the network to allow the changes to take effect.
+    You can change the power management settings for the network adapters by going to Device Manager. Then search for the Network Adapters category.  
+![image](https://user-images.githubusercontent.com/121589466/210318697-09dc0dae-941c-40f3-adec-ebdd9e1872e4.png)
+  <br><br/>
+    Right click on the network adapter and select Properties.  
+![image](https://user-images.githubusercontent.com/121589466/210318709-ec76ad27-00f7-4452-b9e1-e50cbea66ce9.png)
+  <br><br/>
+    Go to the Power Management tab and uncheck Allow the computer to turn off this device to save power. Then click ok.
+![image](https://user-images.githubusercontent.com/121589466/210318720-78c7c8a3-764a-458a-aecf-f6aaf5a83f05.png)
+  <br><br/>
+    You may have to restart the machine or attempt to reconnect to the network to allow the changes to take effect.
 
 11.	### Disable Then Re-Enable Network Adapters
-You can also troubleshoot the network adapters by turning them off and then on again to see if that resolves the connectivity issues.
+    You can also troubleshoot the network adapters by turning them off and then on again to see if that resolves the connectivity issues.
 
-You can open Device Manager and navigate to the Network Adapters category. Right click on the adapter and select Disable Device.
- 
-
-Wait one to two minutes and then right click the adapter and select Enable Device.
- 
-
-You can also perform the same action by going to Settings -> Network & Internet. Then select Change Adapter Options. You can now right-click on the adapter and select Disable. Wait for one to two minutes, then right-click on the adapter again and select Enable.
- 
+    You can open Device Manager and navigate to the Network Adapters category. Right click on the adapter and select Disable Device.
+![image](https://user-images.githubusercontent.com/121589466/210318741-52a98dae-4b01-4470-af33-3dfb7a3d4fdb.png)
+  <br><br/>
+    Wait one to two minutes and then right click the adapter and select Enable Device.  
+![image](https://user-images.githubusercontent.com/121589466/210318754-5e23e6cd-dab7-403e-91b7-f11d62e822ee.png)
+  <br><br/>
+    You can also perform the same action by going to Settings -> Network & Internet. Then select Change Adapter Options. You can now right-click on the adapter and select Disable. Wait for one to two minutes, then right-click on the adapter again and select Enable.
+![image](https://user-images.githubusercontent.com/121589466/210318767-f94fe4ca-2c6a-47e1-a3ae-eeaa10e67b45.png)
 
 12.	### Update Network Adapter Drivers
-Outdated drivers can also be the cause of network connectivity issues. You can update the network drivers by opening Device Manager and opening the Network Adapters category. Right click on the adapter you want to update and select Update Driver.
- 
-
-For the lab, we will go with the option of “Search automatically for updated driver software”. This will automatically search for the drivers for your system. If it can’t find the drivers automatically, then you will have to search online to find the latest network drivers for your machine. Then you can select “Browse my computer for driver software”. You can then navigate to where you saved the driver update.
- 
-
-a.	### Uninstall Then Reinstall Network Drivers
-If your system is already running the latest network adapter drivers, then you can try to uninstall the drivers and reinstall them. You will have to first find the manufactures website and find the download for the driver. 
-
-To uninstall the driver, go to Device Manager. Navigate to the Network Adapters category. Then right click on the adapter and select Uninstall Device.
- 
-
-If you go to Action and select Scan for Hardware Changes. The system will automatically reinstall the driver from the file it has on the system. You may also have to restart your system for this to take effect. If it does not find an existing driver file to use, then there will be a small yellow triangle next to the adapter. The name might also change to a generic adapter name.
- 
-
-You can install the driver file you downloaded from the manufactures website by right clicking on that adapter and select Update Driver. Then you can select “Browse my computer for driver software”. You can then navigate to where you saved the driver file. Follow the steps and complete the installation.
- 
-b.	### Change Network Adapter Drivers to Generic
-If you suspect the connectivity issues are caused by the drivers but you can’t find updated drivers to download; you can try to use other drivers which have been installed on the machine already.
-
-In Device Manager, right click on the network adapter driver and select Update Driver. Select “Browse my computer for driver software”. Then select “Let me pick from a list of available drivers”. This will show the available drivers which are compatible.
- 
-
-If you don’t want to use any of those drivers, then you can also uncheck the “Show compatible hardware box”. You can then browse and select the drivers you want to use based on manufacture and then model. Once you made your selection, you can click next to install that driver.
- 
+    Outdated drivers can also be the cause of network connectivity issues. You can update the network drivers by opening Device Manager and opening the Network Adapters category. Right click on the adapter you want to update and select Update Driver.
+![image](https://user-images.githubusercontent.com/121589466/210318779-a98330b0-6e94-4783-a3f3-305801750fa3.png)
+  <br><br/>
+    For the lab, we will go with the option of “Search automatically for updated driver software”. This will automatically search for the drivers for your system. If it can’t find the drivers automatically, then you will have to search online to find the latest network drivers for your machine. Then you can select “Browse my computer for driver software”. You can then navigate to where you saved the driver update.
+![image](https://user-images.githubusercontent.com/121589466/210318797-211b79b6-706b-40bf-9554-7cf69adc5a60.png)
+  <br><br/>
+    a. **Uninstall Then Reinstall Network Drivers**
+    If your system is already running the latest network adapter drivers, then you can try to uninstall the drivers and reinstall them. You will have to first find the manufactures website and find the download for the driver. 
+  <br><br/>
+    To uninstall the driver, go to Device Manager. Navigate to the Network Adapters category. Then right click on the adapter and select Uninstall Device.  
+    ![image](https://user-images.githubusercontent.com/121589466/210318828-b056cb6a-6090-4723-bc9b-25374b61130f.png)
+  <br><br/>
+    If you go to Action and select Scan for Hardware Changes. The system will automatically reinstall the driver from the file it has on the system. You may also have to restart your system for this to take effect. If it does not find an existing driver file to use, then there will be a small yellow triangle next to the adapter. The name might also change to a generic adapter name.  
+    ![image](https://user-images.githubusercontent.com/121589466/210318839-1322808e-3e16-4dab-95b4-54384f9e2660.png)
+  <br><br/>
+    You can install the driver file you downloaded from the manufactures website by right clicking on that adapter and select Update Driver. Then you can select “Browse my computer for driver software”. You can then navigate to where you saved the driver file. Follow the steps and complete the installation.
+  <br><br/>
+    b. **Change Network Adapter Drivers to Generic**
+    If you suspect the connectivity issues are caused by the drivers but you can’t find updated drivers to download; you can try to use other drivers which have been installed on the machine already.
+  <br><br/>
+    In Device Manager, right click on the network adapter driver and select Update Driver. Select “Browse my computer for driver software”. Then select “Let me pick from a list of available drivers”. This will show the available drivers which are compatible.
+    ![image](https://user-images.githubusercontent.com/121589466/210318858-b0bf3e49-fb92-4f22-9341-2c8cc11c328e.png)
+  <br><br/>
+    If you don’t want to use any of those drivers, then you can also uncheck the “Show compatible hardware box”. You can then browse and select the drivers you want to use based on manufacture and then model. Once you made your selection, you can click next to install that driver.  
+    ![image](https://user-images.githubusercontent.com/121589466/210318873-baf37e36-4574-4320-9c85-b16d9a2df246.png)
 
 
 ### ISP Network
