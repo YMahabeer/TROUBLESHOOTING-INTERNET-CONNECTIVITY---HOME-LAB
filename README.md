@@ -442,7 +442,7 @@ Let’s start with the domain controller and how we can troubleshoot it to solve
   You can change the host name of the record and the IP address associated with that host name.   
   ![image](https://user-images.githubusercontent.com/121589466/210310106-1ab1478c-7b2c-4428-8834-9d9a06655ba1.png)
   <br><br/>
-  You can also try resetting the winsock catalog back to its default settings. First open PowerShell with Admin privileges. Enter the command “netsh winsock reset” and press enter to execute it. You can now restart the machine to complete the process.
+  You can also try resetting the winsock catalog back to its default settings. First open PowerShell with Admin privileges. Enter the command “netsh winsock reset” and press enter to execute it. You can now restart the machine to complete the process.  
   ![image](https://user-images.githubusercontent.com/121589466/210310113-baf1a9ae-925f-4396-8d3f-7df636dfaa83.png)
   <br><br/>
 
@@ -469,18 +469,18 @@ For this lab, the router will be a machine which is configured to be the default
 4.	### Turn Off Antivirus and Firewall
     A trigger-happy antivirus or firewall might block the connection for a machine if it sees activity which might be suspicious. You can test if the antivirus or firewall is blocking the connection by temporarily turning them off to see if that has an effect on the connectivity issues.
 
-    If you believe that a firewall rule may be the cause of the network connectivity issues but can’t identity which one it is, then you can reset the firewall rules back to their default settings. You can do this by using the command “netsh advfirewall reset”.
+    If you believe that a firewall rule may be the cause of the network connectivity issues but can’t identity which one it is, then you can reset the firewall rules back to their default settings. You can do this by using the command “netsh advfirewall reset”.  
 ![image](https://user-images.githubusercontent.com/121589466/210318494-f1fe82ea-35a4-4cab-926f-055a43c2408e.png)
 
 5.	### Check IP Configuration
     You should also check that the machine has received an IP address from the DHCP server. You can quickly view the network connectivity information by going into PowerShell and typing “ipconfig /all”. If there is no IP address, then you may have to go through the DHCP troubleshooting steps we did earlier.  
 ![image](https://user-images.githubusercontent.com/121589466/210318514-4a433c4a-5d1c-4840-a5ea-55d250ef9577.png)
   <br><br/>
-    If there is an issue with the IP address, then you can try to release and then request a new IP address. To do this, open PowerShell and type in “ipconfig /release” to release the current IP address. Then type “ipconfig / renew” to request a new IP address from the DHCP server.
+    If there is an issue with the IP address, then you can try to release and then request a new IP address. To do this, open PowerShell and type in “ipconfig /release” to release the current IP address. Then type “ipconfig / renew” to request a new IP address from the DHCP server.  
 ![image](https://user-images.githubusercontent.com/121589466/210318564-7094c1a5-6b36-461e-b568-7dfe4635f807.png)
 
 6.	### Check DNS Settings and Configuration
-    You can also check the DNS server configuration when using the “ipconfig /all” command. If the DNS server has the right IP address, then you can try to clear the DNS cache using the command “ipconfig /flushdns” to see if that resolves the connectivity issues.
+    You can also check the DNS server configuration when using the “ipconfig /all” command. If the DNS server has the right IP address, then you can try to clear the DNS cache using the command “ipconfig /flushdns” to see if that resolves the connectivity issues.  
 ![image](https://user-images.githubusercontent.com/121589466/210318583-5e5e00e3-27bc-497f-aaab-d4429f61a9a8.png)
 
     You can also try to clear the DNS cache on the DNS server by using the command “dnscmd /clearcache”.
@@ -519,7 +519,7 @@ For this lab, the router will be a machine which is configured to be the default
     Right click on the network adapter and select Properties.  
 ![image](https://user-images.githubusercontent.com/121589466/210318709-ec76ad27-00f7-4452-b9e1-e50cbea66ce9.png)
   <br><br/>
-    Go to the Power Management tab and uncheck Allow the computer to turn off this device to save power. Then click ok.
+    Go to the Power Management tab and uncheck Allow the computer to turn off this device to save power. Then click ok.  
 ![image](https://user-images.githubusercontent.com/121589466/210318720-78c7c8a3-764a-458a-aecf-f6aaf5a83f05.png)
   <br><br/>
     You may have to restart the machine or attempt to reconnect to the network to allow the changes to take effect.
@@ -527,17 +527,17 @@ For this lab, the router will be a machine which is configured to be the default
 11.	### Disable Then Re-Enable Network Adapters
     You can also troubleshoot the network adapters by turning them off and then on again to see if that resolves the connectivity issues.
 
-    You can open Device Manager and navigate to the Network Adapters category. Right click on the adapter and select Disable Device.
+    You can open Device Manager and navigate to the Network Adapters category. Right click on the adapter and select Disable Device.  
 ![image](https://user-images.githubusercontent.com/121589466/210318741-52a98dae-4b01-4470-af33-3dfb7a3d4fdb.png)
   <br><br/>
     Wait one to two minutes and then right click the adapter and select Enable Device.  
 ![image](https://user-images.githubusercontent.com/121589466/210318754-5e23e6cd-dab7-403e-91b7-f11d62e822ee.png)
   <br><br/>
-    You can also perform the same action by going to Settings -> Network & Internet. Then select Change Adapter Options. You can now right-click on the adapter and select Disable. Wait for one to two minutes, then right-click on the adapter again and select Enable.
+    You can also perform the same action by going to Settings -> Network & Internet. Then select Change Adapter Options. You can now right-click on the adapter and select Disable. Wait for one to two minutes, then right-click on the adapter again and select Enable.  
 ![image](https://user-images.githubusercontent.com/121589466/210318767-f94fe4ca-2c6a-47e1-a3ae-eeaa10e67b45.png)
 
 12.	### Update Network Adapter Drivers
-    Outdated drivers can also be the cause of network connectivity issues. You can update the network drivers by opening Device Manager and opening the Network Adapters category. Right click on the adapter you want to update and select Update Driver.
+    Outdated drivers can also be the cause of network connectivity issues. You can update the network drivers by opening Device Manager and opening the Network Adapters category. Right click on the adapter you want to update and select Update Driver.  
 ![image](https://user-images.githubusercontent.com/121589466/210318779-a98330b0-6e94-4783-a3f3-305801750fa3.png)
   <br><br/>
     For the lab, we will go with the option of “Search automatically for updated driver software”. This will automatically search for the drivers for your system. If it can’t find the drivers automatically, then you will have to search online to find the latest network drivers for your machine. Then you can select “Browse my computer for driver software”. You can then navigate to where you saved the driver update.
@@ -557,7 +557,7 @@ For this lab, the router will be a machine which is configured to be the default
     b. **Change Network Adapter Drivers to Generic**
     If you suspect the connectivity issues are caused by the drivers but you can’t find updated drivers to download; you can try to use other drivers which have been installed on the machine already.
   <br><br/>
-    In Device Manager, right click on the network adapter driver and select Update Driver. Select “Browse my computer for driver software”. Then select “Let me pick from a list of available drivers”. This will show the available drivers which are compatible.
+    In Device Manager, right click on the network adapter driver and select Update Driver. Select “Browse my computer for driver software”. Then select “Let me pick from a list of available drivers”. This will show the available drivers which are compatible.  
     ![image](https://user-images.githubusercontent.com/121589466/210318858-b0bf3e49-fb92-4f22-9341-2c8cc11c328e.png)
   <br><br/>
     If you don’t want to use any of those drivers, then you can also uncheck the “Show compatible hardware box”. You can then browse and select the drivers you want to use based on manufacture and then model. Once you made your selection, you can click next to install that driver.  
