@@ -564,8 +564,8 @@ For this lab, the router will be a machine which is configured to be the default
 
 
 ### ISP Network
-Once a packet is past your default gateway, it is out of your network. The packet will now travel through your ISP’s network. If you use the tracert command and see that the packets stop progressing at one of the ISP’s routers, then that’s a sign that there might be an issue with your ISP. The only way to fix connection problems that arise from your ISP is to call them and have them fix the issue on their end.
- 
+Once a packet is past your default gateway, it is out of your network. The packet will now travel through your ISP’s network. If you use the tracert command and see that the packets stop progressing at one of the ISP’s routers, then that’s a sign that there might be an issue with your ISP. The only way to fix connection problems that arise from your ISP is to call them and have them fix the issue on their end.  
+![image](https://user-images.githubusercontent.com/121589466/210320160-b1c832a0-55d9-4ab7-ac39-fc408db2ad2e.png)
 
 
 ### Website Is Down
