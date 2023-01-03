@@ -293,7 +293,7 @@ Let’s start with the domain controller and how we can troubleshoot it to solve
   To troubleshoot the DHCP server, open Server Manager on the domain controller and go to Tools -> DHCP.    
   ![image](https://user-images.githubusercontent.com/121589466/210309259-afa2fd4d-b3a0-473a-a364-f456e812c195.png)
 <br><br/>
-  First look to see if the DHCP server is running. If everything is operating fine, then you will see a small green circle with a checkmark in it. If you don’t see the green, then that might be an indicator that something is wrong, and you need to investigate more.
+  First look to see if the DHCP server is running. If everything is operating fine, then you will see a small green circle with a checkmark in it. If you don’t see the green, then that might be an indicator that something is wrong, and you need to investigate more.  
   ![image](https://user-images.githubusercontent.com/121589466/210309275-2a9381ec-3138-48ef-a541-6ec066a72617.png)      
 <br><br/>
       a. **Restart Server**  
