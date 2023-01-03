@@ -578,59 +578,59 @@ For this lab we used the tracert command to trace the path of a packet from a cl
 
 
 ### Source:
-Firewall ports
-https://learn.microsoft.com/en-us/windows/security/threat-protection/windows-firewall/create-an-outbound-port-rulev
-https://learn.microsoft.com/en-us/windows/security/threat-protection/windows-firewall/open-the-group-policy-management-console-to-windows-firewall-with-advanced-security
+Firewall ports  
+https://learn.microsoft.com/en-us/windows/security/threat-protection/windows-firewall/create-an-outbound-port-rulev  
+https://learn.microsoft.com/en-us/windows/security/threat-protection/windows-firewall/open-the-group-policy-management-console-to-windows-firewall-with-advanced-security  
 
-firewall and antivirus
-https://windowsreport.com/antivirus-blocking-internet-wifi/
+firewall and antivirus  
+https://windowsreport.com/antivirus-blocking-internet-wifi/  
 
-NIC Troubleshooting
-https://community.fs.com/blog/troubleshoot-network-adapter-problems-in-windows.html
-https://superuser.com/questions/728239/how-can-i-diagnose-suspected-nic-issues
-https://www.dell.com/support/kbdoc/en-us/000179426/how-to-troubleshoot-and-resolve-any-wired-nic-issues-with-a-desktop-pc
+NIC Troubleshooting  
+https://community.fs.com/blog/troubleshoot-network-adapter-problems-in-windows.html  
+https://superuser.com/questions/728239/how-can-i-diagnose-suspected-nic-issues  
+https://www.dell.com/support/kbdoc/en-us/000179426/how-to-troubleshoot-and-resolve-any-wired-nic-issues-with-a-desktop-pc  
 
-restore system
-https://support.microsoft.com/en-us/windows/recovery-options-in-windows-31ce2444-7de3-818c-d626-e3b5a3024da5#bkmk_use_installation_media_restore
-setup and restore backups and images
-https://support.microsoft.com/en-us/windows/back-up-and-restore-your-pc-ac359b36-7015-4694-de9a-c5eac1ce9d9c
-backup guide
-https://www.youtube.com/watch?v=mOyQAJqeZ48
-windows backup video.
+restore system  
+https://support.microsoft.com/en-us/windows/recovery-options-in-windows-31ce2444-7de3-818c-d626-e3b5a3024da5#bkmk_use_installation_media_restore  
+setup and restore backups and images  
+https://support.microsoft.com/en-us/windows/back-up-and-restore-your-pc-ac359b36-7015-4694-de9a-c5eac1ce9d9c  
+backup guide  
+https://www.youtube.com/watch?v=mOyQAJqeZ48  
+windows backup video.  
 
-booth from known good drive
-https://www.dell.com/support/kbdoc/en-us/000179426/how-to-troubleshoot-and-resolve-any-wired-nic-issues-with-a-desktop-pc
+booth from known good drive  
+https://www.dell.com/support/kbdoc/en-us/000179426/how-to-troubleshoot-and-resolve-any-wired-nic-issues-with-a-desktop-pc  
 
 
-restore system to known good state
-https://support.microsoft.com/en-us/windows/recovery-options-in-windows-31ce2444-7de3-818c-d626-e3b5a3024da5
+restore system to known good state  
+https://support.microsoft.com/en-us/windows/recovery-options-in-windows-31ce2444-7de3-818c-d626-e3b5a3024da5  
 
-troubleshooting network adapters
-https://helpdeskgeek.com/networking/network-adapter-not-working-12-things-to-try/
+troubleshooting network adapters  
+https://helpdeskgeek.com/networking/network-adapter-not-working-12-things-to-try/  
 
-troubleshoot DHCP server
-https://learn.microsoft.com/en-us/windows-server/troubleshoot/troubleshoot-problems-on-dhcp-server
+troubleshoot DHCP server  
+https://learn.microsoft.com/en-us/windows-server/troubleshoot/troubleshoot-problems-on-dhcp-server  
 
-troubleshoot dhcp client
-https://learn.microsoft.com/en-us/windows-server/troubleshoot/troubleshoot-problems-on-dhcp-client
-troubleshoot DHCP
-https://learn.microsoft.com/en-us/troubleshoot/windows-server/networking/troubleshoot-dhcp-guidance?source=recommendations
+troubleshoot dhcp client  
+https://learn.microsoft.com/en-us/windows-server/troubleshoot/troubleshoot-problems-on-dhcp-client  
+troubleshoot DHCP  
+https://learn.microsoft.com/en-us/troubleshoot/windows-server/networking/troubleshoot-dhcp-guidance?source=recommendations  
 
-troubleshoot DNS
-https://www.youtube.com/watch?v=_avtpeF9NPg
-https://learn.microsoft.com/en-us/windows-server/networking/dns/troubleshoot/troubleshoot-dns-client
-https://learn.microsoft.com/en-us/windows-server/networking/dns/troubleshoot/troubleshoot-dns-server
-https://techgenix.com/10-ways-troubleshoot-dns-resolution-issues/
+troubleshoot DNS  
+https://www.youtube.com/watch?v=_avtpeF9NPg  
+https://learn.microsoft.com/en-us/windows-server/networking/dns/troubleshoot/troubleshoot-dns-client  
+https://learn.microsoft.com/en-us/windows-server/networking/dns/troubleshoot/troubleshoot-dns-server  
+https://techgenix.com/10-ways-troubleshoot-dns-resolution-issues/  
 
-https://petri.com/an-active-directory-domain-controller-could-not-be-contacted/
-https://phoenixnap.com/kb/dns-troubleshooting
-https://www.hp.com/us-en/shop/tech-takes/how-to-resolve-dns-issues
-https://www.oreilly.com/library/view/active-directory-cookbook/0596004648/ch13s12.html
+https://petri.com/an-active-directory-domain-controller-could-not-be-contacted/  
+https://phoenixnap.com/kb/dns-troubleshooting  
+https://www.hp.com/us-en/shop/tech-takes/how-to-resolve-dns-issues  
+https://www.oreilly.com/library/view/active-directory-cookbook/0596004648/ch13s12.html  
 
-fix default gateway
-https://windowsreport.com/default-gateway-not-available-windows-10/
-https://adamtheautomator.com/netsh-winsock-reset/
+fix default gateway  
+https://windowsreport.com/default-gateway-not-available-windows-10/  
+https://adamtheautomator.com/netsh-winsock-reset/  
 
-use netsh command
-https://adamtheautomator.com/netsh/
+use netsh command  
+https://adamtheautomator.com/netsh/  
 
