@@ -1,5 +1,4 @@
 # TROUBLESHOOTING-INTERNET-CONNECTIVITY---HOME-LAB
-TROUBLESHOOTING INTERNET CONNECTIVITY - HOME LAB 
 
 ## Lab Overview
 This is a home lab for teaching you how to troubleshoot internet connectivity. You will take a follow-the-path approach where you trace the connection from a client machine all the way to the desired website. For each hop, you will identify the signs that a particular device is not functioning properly. You will also learn to identify and resolve common issues with that type of device on the network.
