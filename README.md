@@ -572,12 +572,12 @@ Once a packet is past your default gateway, it is out of your network. The packe
 If the packet made it through your ISP’s network, then the problem might be with the website you are trying to reach. If you use the tracert command and see “Request timed out” for the target website’s servers, then the issue might just be with that website’s servers. You can quickly test this by navigating to another well-known website.
 
 
-### Conclusion
+## Conclusion
 For this lab we used the tracert command to trace the path of a packet from a client machine, all the way to a well-known website. We then looked at each hop the packet took. For each type of machine on the network, we stepped through the process of troubleshooting those machines. This gave us a better understanding of the different types of machines on the network and the roles they played in facilitating a network connection. 
 
 
 
-### Source:
+## Source:
 Firewall ports  
 https://learn.microsoft.com/en-us/windows/security/threat-protection/windows-firewall/create-an-outbound-port-rulev  
 https://learn.microsoft.com/en-us/windows/security/threat-protection/windows-firewall/open-the-group-policy-management-console-to-windows-firewall-with-advanced-security  
